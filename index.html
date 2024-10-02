@@ -3,9 +3,138 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
     <title>Do an web</title>
   </head>
   <body>
-    <h1>Do an</h1>
+    <!-- header -->
+    <header>
+      <!-- menu -->
+      <div id="container">
+        <nav id="top">
+          <!-- logo -->
+          <figure id="logo">
+            <img src="./assets/imgs/icon.png" alt="Nine Store" id="logo-icon" />
+            <span id="logo-name"><strong>Nine</strong> Store</span>
+          </figure>
+          <!-- menu -->
+          <ul id="top-menu">
+            <li class="menu-list">
+              <a href="#!" class="menu-product">Laptop</a>
+            </li>
+            <li class="menu-list">
+              <a href="#!" class="menu-item">Macbook</a>
+            </li>
+            <li class="menu-list">
+              <a href="#!" class="menu-item">Thu cũ đổi mới</a>
+            </li>
+            <li class="menu-list">
+              <a href="#!" class="menu-item">Best seller</a>
+            </li>
+            <li class="menu-list"><a href="#!" class="menu-item">More</a></li>
+          </ul>
+          <!-- user -->
+          <figure id="user-icon-list">
+            <!-- Search -->
+            <img
+              src="./assets/imgs/search.svg"
+              alt="Search"
+              class="user-item"
+              id="search"
+            />
+            <!-- Account -->
+            <img
+              src="./assets/imgs/user.svg"
+              alt="Account"
+              class="user-item"
+              id="account"
+            />
+            <!-- Cart -->
+            <img
+              src="./assets/imgs/cart.svg"
+              alt="Cart"
+              class="user-item"
+              id="cart"
+            />
+          </figure>
+        </nav>
+      </div>
+      <img src="./assets/imgs/laptop1.avif" alt="" id="header-background" />
+    </header>
+    <!-- main -->
+    <main>
+      <section id="sale">
+        <div id="container">
+          <h1 id="sale-heading">Đang giảm giá</h1>
+          <div id="product-list">
+            <!-- product 1 -->
+            <section class="product">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details"></i>
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 2 -->
+            <section class="product">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
