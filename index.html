@@ -40,27 +40,22 @@
           </ul>
           <!-- user -->
           <figure id="user-icon-list">
+            
             <!-- Search -->
-            <img
-              src="./assets/imgs/search.svg"
-              alt="Search"
-              class="user-item"
-              id="search"
-            />
+            <div class="search active">
+              <input type="text" class="search-box" placeholder="Nhập nội dung tìm kiếm">
+              <button class="user-item" id="search-btn">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              </button>
+            </div>
             <!-- Account -->
-            <img
-              src="./assets/imgs/user.svg"
-              alt="Account"
-              class="user-item"
-              id="account"
-            />
+            <button class="user-item">
+              <i class="fa-regular fa-user account-icon"></i>
+            </button>
             <!-- Cart -->
-            <img
-              src="./assets/imgs/cart.svg"
-              alt="Cart"
-              class="user-item"
-              id="cart"
-            />
+            <button class="user-item">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
           </figure>
         </nav>
       </div>
@@ -68,12 +63,81 @@
     </header>
     <!-- main -->
     <main>
+      <!-- sale -->
       <section id="sale">
         <div class="container">
           <h1 id="sale-heading">Đang giảm giá</h1>
-          <div id="product-list">
+          <div id="sale-list">
+            <!-- sale 1 -->
+            <section class="sale">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="sale-img"
+              />
+              <p class="sale-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="sale-price">10.490.000₫</span>
+              <div class="sale-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details"></i>
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- sale 2 -->
+            <section class="sale">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="sale-img"
+              />
+              <p class="sale-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="sale-price">10.490.000₫</span>
+              <div class="sale-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- sale 3 -->
+            <section class="sale">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="sale-img"
+              />
+              <p class="sale-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="sale-price">10.490.000₫</span>
+              <div class="sale-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+          </div>
+        </div>
+      </section>
+      <!-- all product -->
+      <section id="all-product">
+        <div class="container">
+          <h1 id="all-product-heading">Sản phẩm</h1>
+          <div id="product-list" class="all-product-list">
             <!-- product 1 -->
-            <section class="product">
+            <section class="product all-product-item">
               <img
                 src="./assets/imgs/laptop1.avif"
                 alt=""
@@ -93,7 +157,7 @@
               </i>
             </section>
             <!-- product 2 -->
-            <section class="product">
+            <section class="product all-product-item">
               <img
                 src="./assets/imgs/laptop1.avif"
                 alt=""
@@ -113,7 +177,327 @@
               </i>
             </section>
             <!-- product 3 -->
-            <section class="product">
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
+              <img
+                src="./assets/imgs/laptop1.avif"
+                alt=""
+                class="product-img"
+              />
+              <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+              <span class="product-price">10.490.000₫</span>
+              <div class="product-original-price">
+                <span class="original-price">13.690.000₫</span>
+                <span class="sale-value">-23%</span>
+              </div>
+              <i class="fa-regular fa-eye more-details">
+                <div class="note">Xem thêm thông tin</div>
+              </i>
+              <i class="fa-solid fa-cart-shopping add-cart">
+                <div class="note">Thêm vào giỏ hàng</div>
+              </i>
+            </section>
+            <!-- product 3 -->
+            <section class="product all-product-item">
               <img
                 src="./assets/imgs/laptop1.avif"
                 alt=""
@@ -133,8 +517,14 @@
               </i>
             </section>
           </div>
+          <ul class="listPage">
+            <li class="numberlist active">1</li>
+            <li class="numberlist">2</li>
+            <li class="numberlist">3</li>
+          </ul>
         </div>
       </section>
     </main>
   </body>
+  <script src="./main.js"></script>
 </html>
