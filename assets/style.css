@@ -39,10 +39,10 @@ header {
 nav#top {
   padding: 16px 0;
   z-index: 1;
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
   top: 0px;
 }
 #logo:hover,
@@ -115,6 +115,35 @@ input:focus {
   font-size: 2rem;
   background: none;
   border: none;
+}
+/* ----------- account -------------- */
+#account {
+  position: relative;
+}
+.account-option {
+  position: absolute;
+  background: #504f4f;
+  width: 100px;
+  left: 50%;
+  display: none;
+  transform: translate(-50%, 0);
+}
+.account-option-item {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.account-option-item:hover {
+  background-color: #888888;
+}
+.login-btn {
+  border-bottom: 1px solid;
+}
+.account-btn:hover + .account-option,
+.account-option:hover {
+  display: block;
 }
 /*------------------------------ sale ------------------------------*/
 #sale {
@@ -415,4 +444,17 @@ h1:hover::after {
 .numberlist.active {
   background-color: #504f4f;
   color: #fff;
+}
+/* ------------------------------------- Login Page ------------------------------------ */
+.login-page {
+  background-color: #ccc;
+  display: none;
+}
+.login-box {
+  width: 70%;
+  margin: 0 auto;
+  padding: 100px;
+}
+.login-box input {
+  margin: 10px 0;
 }

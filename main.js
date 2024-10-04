@@ -1,14 +1,14 @@
 // ---------------------------------- top menu ---------------------------------
-document.getElementById("logo").addEventListener("click", function() {  
-    window.location.href = "index.html"; // Thay đổi "index.html" thành đường dẫn của trang chủ của bạn  
-}); 
+document.getElementById("logo").addEventListener("click", function () {
+  window.location.href = "index.html"; // Thay đổi "index.html" thành đường dẫn của trang chủ của bạn
+});
 const search = document.querySelector(".search");
 const searchbtn = document.querySelector("#search-btn");
 const input = document.querySelector(".search-box");
-searchbtn.addEventListener("click", ()=>{
+searchbtn.addEventListener("click", () => {
   search.classList.toggle("active");
   input.focus();
-})
+});
 
 // ---------------------------------- Phan trang ---------------------------------
 let thisPage = 1;
@@ -32,8 +32,8 @@ function listPage() {
   let count = Math.ceil(list.length / limit);
   document.querySelector(".listPage").innerHTML = "";
   if (thisPage != 1) {
-    let prev = document.createElement('li');
-    prev.innerText = 'PREV';
+    let prev = document.createElement("li");
+    prev.innerText = "PREV";
     prev.setAttribute("onclick", "changePage(" + (thisPage - 1) + ")");
     document.querySelector(".listPage").appendChild(prev);
   }
@@ -47,13 +47,20 @@ function listPage() {
     document.querySelector(".listPage").appendChild(newPage);
   }
   if (thisPage != count) {
-    let next = document.createElement('li');
-    next.innerText = 'NEXT';
+    let next = document.createElement("li");
+    next.innerText = "NEXT";
     next.setAttribute("onclick", "changePage(" + (thisPage + 1) + ")");
-    document.querySelector(".listPage").appendChild(next)
+    document.querySelector(".listPage").appendChild(next);
   }
 }
 function changePage(i) {
   thisPage = i;
   loadItem();
 }
+// --------------------------------------------- Login -----------------------------------
+const homePage = document.querySelector(".home-page");
+const loginPage = document.querySelector(".login-page");
+document.querySelector(".login-btn").addEventListener("click", () => {
+  homePage.style.display = "none";
+  loginPage.style.display = "block";
+});
