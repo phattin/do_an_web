@@ -10,6 +10,46 @@ searchbtn.addEventListener("click", () => {
   input.focus();
 });
 
+// ---------------------------------- hero slide show ---------------------------------
+const listImg = document.querySelector('.list-hero')
+const imgs = document.querySelectorAll('.hero-img')
+const nextHero = document.querySelector('.hero-btn-next')
+const prevHero = document.querySelector('.hero-btn-prev')
+const dotList = document.querySelector('#dots-list')
+let dots = document.querySelectorAll('.dot-item')
+const lengthImgs = imgs.length
+let currentImg = 0
+let widthImg = imgs[0].offsetWidth
+slideShownext = () => {
+  if(currentImg == lengthImgs - 1){
+    currentImg = 0;
+  }
+  else {
+    currentImg++
+  }
+  listImg.style.transform = `translateX(${widthImg * -1 * currentImg}px)`
+  document.querySelector('.dot-item.active').classList.remove('active')
+  dots[currentImg].classList.add('active')
+}
+let slideShowauto = setInterval(slideShownext, 4000)
+nextHero.addEventListener("click", () => {
+  clearInterval(slideShowauto);
+  slideShownext()
+  slideShowauto = setInterval(slideShownext, 4000)
+})
+prevHero.addEventListener("click", () => {
+  clearInterval(slideShowauto);
+  if(currentImg == 0){
+    currentImg = lengthImgs - 1;
+  }
+  else {
+    currentImg--
+  }
+  listImg.style.transform = `translateX(${widthImg * -1 * currentImg}px)`
+  slideShowauto = setInterval(slideShownext, 4000)
+  document.querySelector('.dot-item.active').classList.remove('active')
+  dots[currentImg].classList.add('active')
+})
 // ---------------------------------- Phan trang ---------------------------------
 let thisPage = 1;
 let limit = 8;
