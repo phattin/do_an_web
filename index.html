@@ -573,25 +573,104 @@
       </main>
     </div>
     <div class="login-page">
-      <div class="login-box">
-        <h1 class="login-title">Đăng nhập</h1>
-        <br />
-        <label for="email" class="label-login">Email đăng nhập:</label> <br />
-        <input
-          type="email"
-          id="email"
-          placeholder="Nhập email của bạn:"
-        /><br />
-        <label for="password" class="label-login">Mật khẩu:</label><br />
-        <input
-          type="password"
-          id="password"
-          placeholder="Nhập mật khẩu của bạn:"
-        />
-        <br />
-        <button type="submit">Đăng nhập</button> <br />
-        <button class="register">Đăng ký</button>
-        <button class="forgot-password">Quên mật khẩu?</button>
+      <div class="container">
+        <div class="login-box">
+          <h1 class="login-title">Đăng nhập</h1>
+          <form class="form-login">
+            <label for="email" class="label-login email-label-login"
+              >Email đăng nhập:</label
+            >
+            <br />
+            <input
+              type="email"
+              id="email-login"
+              placeholder="Nhập email của bạn:"
+            /><br />
+            <label for="password" class="label-login password-label-login"
+              >Mật khẩu:</label
+            ><br />
+            <input
+              type="password"
+              id="password"
+              placeholder="Nhập mật khẩu của bạn:"
+            />
+            <br />
+            <button type="submit" class="login-submit">Đăng nhập</button> <br />
+            <div class="register-inlogin">
+              <span class="donthaveaccount">Chưa có tài khoản?</span>
+              <button class="register-btn">Đăng ký</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="register-page">
+      <div class="container">
+        <div class="register-box">
+          <h1 class="register-title">Đăng ký</h1>
+          <form class="form-register">
+            <div class="form-control">
+              <label for="name" class="label-register name-label-register">
+                Tên của bạn:
+              </label>
+              <br />
+              <input
+                type="name"
+                id="name-register"
+                class="error"
+                placeholder="Nhập tên của bạn: "
+              />
+              <p class="register-error">Error</p>
+            </div>
+            <div class="form-control">
+              <label for="email" class="label-register email-label-register">
+                Email đăng ký:
+              </label>
+              <br />
+              <input
+                type="email"
+                id="email-register"
+                placeholder="Nhập email của bạn:"
+              />
+              <p class="register-error">Error</p>
+            </div class="form-control">
+            <div class="form-control">
+              <label
+                for="password"
+                class="label-register password-label-register"
+              >
+                Mật khẩu: </label
+              ><br />
+              <input
+                type="password"
+                id="password"
+                placeholder="Nhập mật khẩu của bạn:"
+              />
+              <p class="register-error">Error</p>
+            </div class="form-control">
+            <div class="form-control">
+              <label
+                for="password"
+                class="label-register password-label-register"
+              >
+                Nhập lại mật khẩu: </label
+              >
+              <br>
+              <input
+                type="password"
+                id="re-password"
+                placeholder="Nhập lại mật khẩu:"
+              />
+              <p class="register-error">Error</p>
+            </div class="form-control">
+            <button type="submit" class="register-submit">Đăng ký</button>
+            <br />
+            <div class="login-inregister">
+              <span class="haveaccount">Đã có tài khoản?</span>
+              <button class="login-btn">Đăng nhập</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </body>
