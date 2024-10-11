@@ -616,7 +616,7 @@ h1:hover::after {
   padding: 16px;
   align-items: center;
   gap: 10px;
-  border: none;
+  border: 2px solid #fff;
   transition: 0.3s;
 }
 .form-register {

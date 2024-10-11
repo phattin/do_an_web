@@ -577,7 +577,7 @@
         <div class="login-box">
           <h1 class="login-title">Đăng nhập</h1>
           <form class="form-login">
-            <label for="email" class="label-login email-label-login"
+            <label for="email-login" class="label-login email-label-login"
               >Email đăng nhập:</label
             >
             <br />
@@ -586,12 +586,12 @@
               id="email-login"
               placeholder="Nhập email của bạn:"
             /><br />
-            <label for="password" class="label-login password-label-login"
+            <label for="password-login" class="label-login password-label-login"
               >Mật khẩu:</label
             ><br />
             <input
               type="password"
-              id="password"
+              class="password-login"
               placeholder="Nhập mật khẩu của bạn:"
             />
             <br />
@@ -610,17 +610,16 @@
           <h1 class="register-title">Đăng ký</h1>
           <form class="form-register">
             <div class="form-control">
-              <label for="name" class="label-register name-label-register">
+              <label for="username" class="label-register name-label-register">
                 Tên của bạn:
               </label>
               <br />
               <input
                 type="name"
-                id="name-register"
-                class="error"
+                id="username"
                 placeholder="Nhập tên của bạn: "
               />
-              <p class="register-error">Error</p>
+              <p class="register-error"></p>
             </div>
             <div class="form-control">
               <label for="email" class="label-register email-label-register">
@@ -629,10 +628,10 @@
               <br />
               <input
                 type="email"
-                id="email-register"
+                id="email"
                 placeholder="Nhập email của bạn:"
               />
-              <p class="register-error">Error</p>
+              <p class="register-error"></p>
             </div class="form-control">
             <div class="form-control">
               <label
@@ -646,11 +645,11 @@
                 id="password"
                 placeholder="Nhập mật khẩu của bạn:"
               />
-              <p class="register-error">Error</p>
+              <p class="register-error"></p>
             </div class="form-control">
             <div class="form-control">
               <label
-                for="password"
+                for="re-password"
                 class="label-register password-label-register"
               >
                 Nhập lại mật khẩu: </label
@@ -661,7 +660,7 @@
                 id="re-password"
                 placeholder="Nhập lại mật khẩu:"
               />
-              <p class="register-error">Error</p>
+              <p class="register-error"></p>
             </div class="form-control">
             <button type="submit" class="register-submit">Đăng ký</button>
             <br />
@@ -673,6 +672,6 @@
         </div>
       </div>
     </div>
+    <script src="./main.js"></script>
   </body>
-  <script src="./main.js"></script>
 </html>
