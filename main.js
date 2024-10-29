@@ -102,7 +102,8 @@ const registerPage = document.querySelector(".register-page");
 
 const loginbtn = document.querySelectorAll(".login-btn");
 loginbtn.forEach((login) => {
-  login.addEventListener("click", () => {
+  login.addEventListener("click", (e) => {
+    e.preventDefault();
     homePage.style.display = "none";
     registerPage.style.display = "none";
     loginPage.style.display = "block";
@@ -114,7 +115,8 @@ loginbtn.forEach((login) => {
 // --------------------------------------------- Register -----------------------------------
 const registerbtn = document.querySelectorAll(".register-btn");
 registerbtn.forEach((register) => {
-  register.addEventListener("click", () => {
+  register.addEventListener("click", (e) => {
+    e.preventDefault();
     homePage.style.display = "none";
     registerPage.style.display = "block";
     loginPage.style.display = "none";
@@ -191,9 +193,9 @@ formRegister.addEventListener("submit", (e) => {
   let isPasswordEmptyError = checkEmptyError(password);
   let isRepasswordEmptyError = checkEmptyError(repassword);
 
-  let isUsernameLengthError = false;
-  let isEmailError = false;
-  let isMatchError = false;
+  let isUsernameLengthError = true;
+  let isEmailError = true;
+  let isMatchError = true;
   if (!isUsernameEmptyError) {
     isUsernameLengthError = checkLengthError(username, 5);
   }
@@ -211,10 +213,9 @@ formRegister.addEventListener("submit", (e) => {
       UserId: Math.ceil(Math.random() * 10000000000),
       UserName: username.value,
       Email: email.value,
-      Password: password.value
+      Password: password.value,
     };
     userLocal.push(user);
-    localStorage.setItem("users", JSON.stringify(userLocal))
+    localStorage.setItem("users", JSON.stringify(userLocal));
   }
 });
-
