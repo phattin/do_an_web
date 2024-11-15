@@ -364,17 +364,25 @@ h1:hover::after {
   }
 } */
 /*------------------------------ product ------------------------------*/
-#all-product {
-  position: relative;
-}
 #all-product-heading {
   margin-top: 100px;
+}
+.type-list {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+.type-item {
+  width: 100px;
+  height: 100px;
 }
 #product-list {
   margin-top: 25px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  position: relative;
 }
 .product {
   width: 100%;
@@ -483,17 +491,21 @@ h1:hover::after {
   display: block;
 }
 /* --------- listpage ----------- */
+#all-product {
+  position: relative;
+}
 .listPage {
   margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 700px;
+  bottom: -50px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
-.listPage li {
+
+.listPage .numberlist {
   background-color: #888;
   margin: 20px 5px 0;
   padding: 10px;
@@ -577,7 +589,7 @@ h1:hover::after {
 
 /* ------------------------------------- Register Page ------------------------------------ */
 .register-page {
-  /* display: none; */
+  display: none;
   height: 100vh;
 }
 .register-page .container {
