@@ -19,6 +19,17 @@ body {
   margin: 0 auto;
   max-width: 100vw;
 }
+/*------------------------------ Overlay ------------------------------*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Nền mờ màu đen */
+  z-index: 10;
+  /* display: none; */
+}
 /*------------------------------ header ------------------------------*/
 header {
   background: rgb(255, 255, 255);
@@ -240,13 +251,13 @@ h1:hover::after {
   width: 100%;
 }
 .sale-name {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 .sale-price {
   display: inline-block;
   margin-top: 10px;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #dd2f2c;
 }
@@ -255,7 +266,7 @@ h1:hover::after {
 }
 .original-price {
   color: #a4a4a4;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
   text-decoration: line-through;
 }
@@ -500,7 +511,7 @@ h1:hover::after {
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: -50px;
+  top: 750px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -515,7 +526,67 @@ h1:hover::after {
   background-color: #504f4f;
   color: #fff;
 }
-
+/* ------------------------------------- Details ------------------------------------ */
+.detail-box {
+  background-color: #fff;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  overflow-y: auto;
+  cursor: default;
+  z-index: 11;
+}
+.detail-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.detail-img {
+  width: 400px;
+}
+.detail-title {
+  margin-left: 10px;
+}
+.detail-heading {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.detail-price {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #dd2f2c;
+}
+.detail-original-price {
+  margin: 20px 0;
+}
+.detail-original-price-value {
+  color: #a4a4a4;
+  font-size: 2rem;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+.detail-value {
+  color: #eb5757;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-left: 20px;
+}
+.buy-btn,
+.add-cart-btn {
+  background-color: #000000;
+  color: #fff;
+  padding: 10px;
+  margin-right: 10px;
+}
+.detail-box h3 {
+  margin-top: 20px;
+}
 /* ------------------------------------- Login Page ------------------------------------ */
 .login-page {
   display: none;

@@ -1,3 +1,10 @@
+// -------------------------------- hidden Orverlay ------------------------------
+const overlayArr = document.querySelectorAll(".overlay");
+overlayArr.forEach((overlays) => {
+  overlays.addEventListener("click", (event) => {
+    if (event.target === overlays) overlays.style.display = "none";
+  });
+});
 // ---------------------------------- top menu ---------------------------------
 document.getElementById("logo").addEventListener("click", function () {
   window.location.href = "index.html"; // Thay đổi "index.html" thành đường dẫn của trang chủ của bạn
@@ -48,6 +55,13 @@ prevHero.addEventListener("click", () => {
   document.querySelector(".dot-item.active").classList.remove("active");
   dots[currentImg].classList.add("active");
 });
+// ---------------------------------- Detail ---------------------------------
+function showDetail(iconDetail) {
+  let section = iconDetail.closest("section");
+  let overlay = section.querySelector(".overlay");
+  overlay.style.display = "block";
+}
+
 // ---------------------------------- Phan trang ---------------------------------
 // let thisPage = 1;
 // let limit = 8;
