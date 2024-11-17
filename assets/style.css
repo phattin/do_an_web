@@ -12,7 +12,6 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
-  height: 5000px;
 }
 .container {
   width: 1000px;
@@ -28,7 +27,15 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.5); /* Nền mờ màu đen */
   z-index: 10;
-  /* display: none; */
+  display: none;
+}
+.close {
+  color: red;
+  font-size: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }
 /*------------------------------ header ------------------------------*/
 header {
@@ -158,6 +165,20 @@ input:focus {
 .account-btn:hover + .account-option,
 .account-option:hover {
   display: block;
+}
+/* ----------- cart -------------- */
+.user-cart {
+  position: relative;
+}
+.total-quantity-cart{
+  width: 20px;
+  font-size: 1.5rem;
+  position: absolute;
+  color: #fff;
+  top: -5px;
+  right: -5px;
+  background-color: #dd2f2c;
+  border-radius: 50%;
 }
 /*------------------------------ hero ------------------------------*/
 #hero .container {
@@ -529,16 +550,18 @@ h1:hover::after {
 /* ------------------------------------- Details ------------------------------------ */
 .detail-box {
   background-color: #fff;
-  padding: 20px;
+  padding: 30px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 1000px;
   height: 80%;
   overflow-y: auto;
   cursor: default;
   z-index: 11;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .detail-head {
   display: flex;
@@ -587,6 +610,113 @@ h1:hover::after {
 .detail-box h3 {
   margin-top: 20px;
 }
+.detail-box table {
+  margin-top: 10px;
+}
+.detail-box td:first-child {
+  font-weight: 700;
+  width: 200px;
+}
+.detail-box td {
+  padding: 10px;
+  border: 1px solid;
+}
+.detail-quantity {
+  display: flex;
+  margin-bottom: 20px;
+  vertical-align: middle;
+}
+.detail-quantity-value::-webkit-inner-spin-button, 
+.detail-quantity-value::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.detail-quantity-value {
+  display: inline-block;
+  text-align: center;
+  margin: 0 5px;
+  padding: 5px;
+  width: 70px;
+  border: 1px solid;
+  border-radius: 10px;
+  -moz-appearance: textfield;
+
+}
+.desc-quantity,
+.plus-quantity {
+  cursor: pointer;
+  font-size: 28px;
+  display: flex;
+}
+/* ------------------------------------- Cart ------------------------------------ */
+.cart-heading {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 20px;
+}
+.cart-box {
+  background-color: #fff;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 80%;
+  overflow-y: auto;
+  cursor: default;
+  z-index: 11;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.cart-table {
+  margin: 20px auto;
+}
+.cart-table th,
+.cart-table td {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid;
+}
+.cart-table td:first-child {
+  width: 500px;
+}
+.cart-table td:nth-child(2) {
+  width: 200px;
+}
+th {
+  font-weight: 700;
+}
+.order-img {
+  width: 100px;
+  vertical-align: middle;
+  margin-right: 30px;
+}
+.order-quantity {
+  width: 50px;
+}
+.totalPrice {
+  font-weight: 700;
+}
+.delete-order {
+  padding: 10px;
+  background-color: #dddbdb;
+}
+.delete-order:hover {
+  opacity: 0.8;
+}
+.cart-empty {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 0.5;
+  margin-top: 100px;
+}
+
 /* ------------------------------------- Login Page ------------------------------------ */
 .login-page {
   display: none;

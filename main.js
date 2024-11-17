@@ -5,6 +5,12 @@ overlayArr.forEach((overlays) => {
     if (event.target === overlays) overlays.style.display = "none";
   });
 });
+const closes = document.querySelectorAll(".close");
+closes.forEach((closebtn) => {
+  closebtn.addEventListener("click", () => {
+    closebtn.parentElement.parentElement.style.display = "none";
+  });
+});
 // ---------------------------------- top menu ---------------------------------
 document.getElementById("logo").addEventListener("click", function () {
   window.location.href = "index.html"; // Thay đổi "index.html" thành đường dẫn của trang chủ của bạn
@@ -17,6 +23,9 @@ searchbtn.addEventListener("click", () => {
   input.focus();
 });
 
+function showCart() {
+  document.querySelector(".cart-page").style.display = "block";
+}
 // ---------------------------------- hero slide show ---------------------------------
 const listImg = document.querySelector(".list-hero");
 const imgs = document.querySelectorAll(".hero-img");
@@ -56,12 +65,140 @@ prevHero.addEventListener("click", () => {
   dots[currentImg].classList.add("active");
 });
 // ---------------------------------- Detail ---------------------------------
-function showDetail(iconDetail) {
-  let section = iconDetail.closest("section");
-  let overlay = section.querySelector(".overlay");
-  overlay.style.display = "block";
+const detailbtns = document.querySelectorAll(".more-details");
+detailbtns.forEach((detailbtn) => {
+  detailbtn.addEventListener("click", () => {
+    let section = detailbtn.closest("section");
+    let overlay = section.querySelector(".overlay");
+    overlay.style.display = "block";
+  });
+});
+function decreaseQuantity(minusElement) {
+  var detailQuantity = minusElement.parentElement.querySelector(
+    ".detail-quantity-value"
+  );
+  var quantityValue = Number(detailQuantity.value);
+  if (quantityValue > 1) {
+    quantityValue--;
+    detailQuantity.value = quantityValue;
+  }
 }
+function increaseQuantity(plusElement) {
+  var detailQuantity = plusElement.parentElement.querySelector(
+    ".detail-quantity-value"
+  );
+  var quantityValue = Number(detailQuantity.value);
+  quantityValue++;
+  detailQuantity.value = quantityValue;
+}
+const detailQuantityList = document.querySelectorAll(".detail-quantity-value");
+detailQuantityList.forEach((inputNumber) => {
+  inputNumber.addEventListener("input", () => {
+    if (inputNumber.value < 1) {
+      inputNumber.value = "";
+    }
+  });
+});
+const addCartBtns = document.querySelectorAll(".add-cart-btn");
+addCartBtns.forEach((addCartbtn) => {
+  addCartbtn.addEventListener("click", (event) => {
+    var productCB =
+      event.target.parentElement.parentElement.parentElement.parentElement
+        .parentElement.parentElement;
+    var productValue = event.target.parentElement.parentElement.querySelector(
+      ".detail-quantity-value"
+    ).value;
+    console.log(productValue);
+    var productImg = productCB.querySelector(".product-img").src;
+    var productName = productCB.querySelector(".product-name").innerText;
+    var productPrice = productCB.querySelector(".product-price").innerText;
+    addToCart(productImg, productName, productPrice, productValue);
+  });
+});
+// ---------------------------------- Cart ---------------------------------
+const cartBox = document.querySelector(".cart-box");
+const addCarts = document.querySelectorAll(".add-cart");
+addCarts.forEach((addCart) => {
+  addCart.addEventListener("click", (event) => {
+    var productC = event.target.parentElement;
+    var productImg = productC.querySelector(".product-img").src;
+    var productName = productC.querySelector(".product-name").innerText;
+    var productPrice = productC.querySelector(".product-price").innerText;
+    addToCart(productImg, productName, productPrice, 1);
+  });
+});
+var flag = 0;
+function addToCart(productImg, productName, productPrice, productValue) {
+  var cartNameList = cartBox.querySelectorAll(".order-name");
+  for (let i = 0; i < cartNameList.length; i++) {
+    if (cartNameList[i].innerText === productName) {
+      alert("Sản phẩm này đã có trong giỏ hàng");
+      return;
+    }
+  }
+  var addtr = document.createElement("tr");
+  var trcontent = `<tr>
+    <td>
+    <img src="${productImg}" class="order-img">
+      <span class="order-name">${productName}</span>
+    </td>
+    <td><span class="order-price">${productPrice}</span><sup>đ</sup></td>
+    <td><input class="order-quantity" type="number" value="${productValue}" min="1"></td>
+    <td><button onclick="deleteCart(this)" class="delete-order">Xóa</button></td>
+  </tr>`;
+  addtr.innerHTML = trcontent;
+  var cartTable = document.querySelector(".cart-table tbody");
+  cartTable.append(addtr);
+  cartTotal();
+  checkCartEmpty();
+}
+function cartTotal() {
+  var cartList = document.querySelectorAll(".cart-box tbody tr");
+  var totalPrice = 0;
+  var totalQuantity = 0;
+  for (var i = 0; i < cartList.length; i++) {
+    var quantityValue = Number(
+      cartList[i].querySelector(".order-quantity").value
+    );
+    var orderPrice = Number(
+      cartList[i].querySelector(".order-price").innerText.replace(/\./g, "")
+    );
+    totalQuantity = totalQuantity + quantityValue;
+    totalPrice = totalPrice + orderPrice * quantityValue;
+  }
+  if (totalQuantity > 0)
+    document.querySelector(".total-quantity-cart").innerText = totalQuantity;
+  else document.querySelector(".total-quantity-cart").innerText = "";
+  document.querySelector(".cart-table tfoot span").innerText =
+    totalPrice.toLocaleString("de-DE");
 
+  quantityChange();
+}
+function deleteCart(deleteElement) {
+  deleteElement.parentElement.parentElement.remove();
+  cartTotal();
+  checkCartEmpty();
+}
+function quantityChange() {
+  var quantityList = document.querySelectorAll(".order-quantity");
+  for (var i = 0; i < quantityList.length; i++)
+    quantityList[i].addEventListener("change", () => {
+      cartTotal();
+    });
+}
+function checkCartEmpty() {
+  const cartTable = document.querySelector(".cart-table");
+  const cartEmpty = document.querySelector(".cart-empty");
+  var cartLists = document.querySelectorAll(".cart-box tbody tr");
+  if (cartLists.length == 0) {
+    cartTable.style.display = "none";
+    cartEmpty.style.display = "block";
+  } else {
+    cartTable.style.display = "block";
+    cartEmpty.style.display = "none";
+  }
+}
+checkCartEmpty();
 // ---------------------------------- Phan trang ---------------------------------
 // let thisPage = 1;
 // let limit = 8;
