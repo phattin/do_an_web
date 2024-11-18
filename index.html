@@ -40,6 +40,11 @@
           </ul>
           <!-- user -->
           <figure id="user-icon-list">
+            <!-- Admin -->
+            <button class="user-item admin-item" style="display: none;" onclick="showAdminPage()">
+              <i class="fa-solid fa-gear"></i>
+              <span class="total-quantity-cart"></span>
+            </button>
             <!-- Search -->
             <div class="search">
               <input
@@ -60,6 +65,10 @@
                 <button class="account-option-item login-btn">Đăng nhập</button>
                 <button class="account-option-item register-btn">
                   Đăng ký
+                </button>
+                <button class="account-option-item info-btn" onclick="showInfo()">Thông tin tài khoản</button>
+                <button class="account-option-item logout-btn" onclick="logOut()">
+                  Đăng xuất
                 </button>
               </div>
             </div>
@@ -706,16 +715,25 @@
             ><br />
             <input
               type="password"
-              class="password-login"
+              id="password-login"
               placeholder="Nhập mật khẩu của bạn:"
             />
             <br />
+            <div class="login-error">Email hoặc mật khẩu không đúng!</div>
             <button type="submit" class="login-submit">Đăng nhập</button> <br />
             <div class="register-inlogin">
               <span class="donthaveaccount">Chưa có tài khoản?</span>
               <button type="button" class="register-btn">Đăng ký</button>
             </div>
           </form>
+        </div>
+      </div>
+      <div class="overlay login-success">
+        <div class="login-success-box">
+          <i class="fa-solid fa-rectangle-xmark close"></i>
+          <i class="fa-regular fa-circle-check"></i>
+          <h2 class="success-title">Đăng nhập thành công</h2>
+          <h2 class="success-btn" onclick="reloadPage()">Quay về trang chủ</h2>
         </div>
       </div>
     </div>
@@ -787,6 +805,14 @@
           </form>
         </div>
       </div>
+      <div class="overlay register-success">
+        <div class="register-success-box">
+          <i class="fa-solid fa-rectangle-xmark close"></i>
+          <i class="fa-regular fa-circle-check"></i>
+          <h2 class="success-title">Đăng ký thành công</h2>
+          <h2 class="success-btn login-btn">Đăng nhập</h2>
+        </div>
+      </div>
     </div>
     <!---------------------------- cart ------------------------->
     <div class="cart-page overlay">
@@ -820,6 +846,24 @@
           </tfoot>
         </table>
         <div class="cart-empty">Không có sản phẩm nào trong giỏ hàng của bạn</div>
+      </div>
+    </div>
+    <!---------------------------- Account Info ------------------------->
+    <div class="overlay info-account">
+      <div class="info-box">
+        <i class="fa-solid fa-rectangle-xmark close"></i>
+        <h2 class="info-heading">Thông tin của bạn</h2>
+        <table class="info-table">
+          <!-- <tr>
+            <td>Tên:</td>
+            <td>Nguyễn Văn A</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>tinhoctap103@gmail.com</td>
+          </tr> -->
+          <!-- <button class="order-history-btn">Xem lịch sử đặt hàng</button> -->
+        </table>
       </div>
     </div>
     <script src="./main.js"></script>

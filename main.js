@@ -320,25 +320,9 @@ document.addEventListener("DOMContentLoaded", () => {
   displayProducts(allProduct);
   createListPage(allProduct);
 });
-// --------------------------------------------- Login Page-----------------------------------
-const homePage = document.querySelector(".home-page");
-const loginPage = document.querySelector(".login-page");
-const registerPage = document.querySelector(".register-page");
-
-const loginbtn = document.querySelectorAll(".login-btn");
-loginbtn.forEach((login) => {
-  login.addEventListener("click", (e) => {
-    e.preventDefault();
-    homePage.style.display = "none";
-    registerPage.style.display = "none";
-    loginPage.style.display = "block";
-    document.getElementById("email-login").focus();
-  });
-});
-// --------------------------------------------- Login funtion-----------------------------------
-
-// --------------------------------------------- Register -----------------------------------
+// --------------------------------------------- Register Page-----------------------------------
 const registerbtn = document.querySelectorAll(".register-btn");
+const userLocal = JSON.parse(localStorage.getItem("users")) || [];
 registerbtn.forEach((register) => {
   register.addEventListener("click", (e) => {
     e.preventDefault();
@@ -356,7 +340,6 @@ const repassword = document.querySelector("#re-password");
 const formRegister = document.querySelector(".form-register");
 
 // Lấy dữ liệu từ localStorage
-const userLocal = JSON.parse(localStorage.getItem("users")) || [];
 
 function showError(e, message) {
   let parentInput = e.parentElement;
@@ -433,7 +416,10 @@ formRegister.addEventListener("submit", (e) => {
   if (isEmailError || isUsernameLengthError || isMatchError) {
     //do nothing
   } else {
-    alert("Đăng ký thành công");
+    setTimeout(
+      (document.querySelector(".register-success").style.display = "block"),
+      3000
+    );
     const user = {
       UserId: Math.ceil(Math.random() * 10000000000),
       UserName: username.value,
@@ -444,3 +430,114 @@ formRegister.addEventListener("submit", (e) => {
     localStorage.setItem("users", JSON.stringify(userLocal));
   }
 });
+// --------------------------------------------- Login Page-----------------------------------
+const homePage = document.querySelector(".home-page");
+const loginPage = document.querySelector(".login-page");
+const registerPage = document.querySelector(".register-page");
+
+const loginbtn = document.querySelectorAll(".login-btn");
+loginbtn.forEach((login) => {
+  login.addEventListener("click", (e) => {
+    e.preventDefault();
+    homePage.style.display = "none";
+    registerPage.style.display = "none";
+    loginPage.style.display = "block";
+    document.getElementById("email-login").focus();
+  });
+});
+// --------------------------------------------- Login funtion-----------------------------------
+const adminAccount = {
+  UserName: "admin",
+  Password: "admin123",
+};
+const loginSubmit = document.querySelector(".login-submit");
+loginSubmit.addEventListener("click", (event) => {
+  const userLocalLogin = JSON.parse(localStorage.getItem("users")) || [];
+  const emailLogin = document.getElementById("email-login");
+  const passwordLogin = document.getElementById("password-login");
+  event.preventDefault();
+  if (
+    adminAccount.UserName === emailLogin.value &&
+    adminAccount.Password === passwordLogin.value
+  ) {
+    setTimeout(
+      (document.querySelector(".login-success").style.display = "block"),
+      3000
+    );
+    document.querySelector(".login-error").style.display = "none";
+    localStorage.setItem("userLogin", JSON.stringify(adminAccount));
+    isLogin = true;
+  } else {
+    const findUser = userLocalLogin.find(
+      (user) =>
+        (user.UserName === emailLogin.value ||
+          user.Email === emailLogin.value) &&
+        user.Password === passwordLogin.value
+    );
+    if (!findUser) {
+      document.querySelector(".login-error").style.display = "block";
+    } else {
+      setTimeout(
+        (document.querySelector(".login-success").style.display = "block"),
+        3000
+      );
+      document.querySelector(".login-error").style.display = "none";
+      localStorage.setItem("userLogin", JSON.stringify(findUser));
+      isLogin = true;
+    }
+  }
+});
+// -------------------------------- home ------------------------------
+var adminLoginAccount = JSON.parse(localStorage.getItem("userLogin"));
+var isAdmin = adminAccount.UserName === adminAccount.UserName ? true : false;
+console.log(localStorage.getItem("userLogin"));
+var isLogin = localStorage.getItem("userLogin") ? true : false;
+function reloadPage() {
+  window.location.href = "index.html";
+}
+console.log(isAdmin);
+if (isLogin) {
+  document.querySelector(".account-option-item.login-btn").style.display =
+    "none";
+  document.querySelector(".account-option-item.register-btn").style.display =
+    "none";
+  if (isAdmin) {
+    document.querySelector(".admin-item").style.display = "block";
+  }
+} else {
+  document.querySelector(".account-option-item.info-btn").style.display =
+    "none";
+  document.querySelector(".account-option-item.logout-btn").style.display =
+    "none";
+}
+function showInfo() {
+  document.querySelector(".info-account").style.display = "block";
+}
+function innerInfo() {
+  const infoTable = document.querySelector(".info-table");
+  const userLogin = JSON.parse(localStorage.getItem("userLogin")) || [];
+  if(isAdmin)
+    infoTable.innerHTML = `Bạn đang là Admin`
+  else {
+  infoTable.innerHTML = `<tr>
+            <td>Tên:</td>
+            <td>${userLogin.UserName}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>${userLogin.Email}</td>
+          </tr>
+          <button class="order-history-btn">Xem lịch sử đặt hàng</button>`
+  }
+}
+innerInfo();
+function logOut() {
+  localStorage.removeItem("userLogin");
+  isLogin = false;
+  isAdmin = false;
+  window.location.href = "index.html";
+}
+// -------------------------------- Admin ------------------------------
+function showAdminPage() {
+  window.location.href = "admin.html";
+}

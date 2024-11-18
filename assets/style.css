@@ -144,7 +144,7 @@ input:focus {
 .account-option {
   position: absolute;
   background: #504f4f;
-  width: 100px;
+  width: 150px;
   left: 50%;
   display: none;
   transform: translate(-50%, 0);
@@ -153,14 +153,15 @@ input:focus {
   width: 100%;
   background: none;
   border: none;
+  border-bottom: 1px solid;
   cursor: pointer;
-  padding: 8px;
+  padding: 15px 8px;
 }
 .account-option-item:hover {
   background-color: #888888;
 }
 .login-btn {
-  border-bottom: 1px solid;
+  
 }
 .account-btn:hover + .account-option,
 .account-option:hover {
@@ -549,17 +550,7 @@ h1:hover::after {
 }
 /* ------------------------------------- Details ------------------------------------ */
 .detail-box {
-  background-color: #fff;
-  padding: 30px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1000px;
-  height: 80%;
-  overflow-y: auto;
-  cursor: default;
-  z-index: 11;
+  
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -640,7 +631,6 @@ h1:hover::after {
   width: 70px;
   border: 1px solid;
   border-radius: 10px;
-  -moz-appearance: textfield;
 
 }
 .desc-quantity,
@@ -664,7 +654,7 @@ h1:hover::after {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 1000px;
-  height: 80%;
+  max-height: 80%;
   overflow-y: auto;
   cursor: default;
   z-index: 11;
@@ -716,7 +706,49 @@ th {
   opacity: 0.5;
   margin-top: 100px;
 }
-
+/* ------------------------------------- Info ------------------------------------ */
+.info-box {
+  background-color: #fff;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  max-height: 80%;
+  overflow-y: auto;
+  cursor: default;
+  z-index: 11;
+  text-align: center;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.info-heading {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 20px;
+}
+.info-table {
+  margin: 20px auto;
+}
+.info-table td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid;
+}
+.order-history-btn {
+  width: 200px;
+  padding: 20px;
+  font-size: 1.6rem;
+  padding: 20px;
+  border: 2px solid #0099ff;
+  border-radius: 10px;
+  margin: 20px auto 0;
+  background-color: #43b4ff;
+  cursor: pointer;
+}
 /* ------------------------------------- Login Page ------------------------------------ */
 .login-page {
   display: none;
@@ -787,7 +819,14 @@ th {
   font-weight: 400;
   margin-left: 10px;
 }
-
+.login-error {
+  background-color: #ffcccc;
+  color: rgb(148, 41, 41);
+  font-size: 1.4rem;
+  padding:20px 10px;
+  margin-top: 10px;
+  display: none;
+}
 /* ------------------------------------- Register Page ------------------------------------ */
 .register-page {
   display: none;
@@ -871,4 +910,43 @@ th {
   margin-top: 5px;
   font-size: 1.4rem;
   color: var(--error-color);
+}
+.login-success-box,
+.register-success-box{
+  width: 800px;
+  background-color: #fff;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  cursor: default;
+  text-align: center;
+  vertical-align: middle;
+  transition: 1s;
+  z-index: 11;
+}
+.fa-circle-check {
+  font-size: 50px;
+  color: #12d823;
+}
+.success-title{
+  margin-top: 20px;
+  font-size: 50px;
+  font-weight: 700;
+}
+.success-btn {
+  width: 200px;
+  padding: 20px;
+  font-size: 30px;
+  padding: 20px;
+  border: 2px solid #0099ff;
+  border-radius: 10px;
+  margin: 20px auto 0;
+  background-color: #43b4ff;
+  cursor: pointer;
+}
+.login-success .success-btn {
+  width: 300px;
 }
