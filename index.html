@@ -766,7 +766,7 @@
                 placeholder="Nhập email của bạn:"
               />
               <p class="register-error"></p>
-            </div class="form-control">
+            </div>
             <div class="form-control">
               <label
                 for="password"
@@ -780,7 +780,7 @@
                 placeholder="Nhập mật khẩu của bạn:"
               />
               <p class="register-error"></p>
-            </div class="form-control">
+            </div>
             <div class="form-control">
               <label
                 for="re-password"
@@ -795,7 +795,21 @@
                 placeholder="Nhập lại mật khẩu:"
               />
               <p class="register-error"></p>
-            </div class="form-control">
+            </div>
+            <div class="form-control">
+              <label
+                for="address"
+                class="label-register password-label-register"
+              >
+                Địa chỉ: </label>
+                <br />
+              <input
+                type="text"
+                id="address"
+                placeholder="Nhập địa chỉ của bạn:"
+              />
+              <p class="register-error"></p>
+            </div>
             <button type="submit" class="register-submit">Đăng ký</button>
             <br />
             <div class="login-inregister">
@@ -841,7 +855,8 @@
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="4" class="totalPrice">Tổng cộng: <span>0</span><sup>đ</sup></td>
+              <td colspan="2" class="totalPrice">Tổng cộng: <span>0</span><sup>đ</sup></td>
+              <td colspan="2" class="submit-order">Chốt đơn</td>
             </tr>
           </tfoot>
         </table>

@@ -337,10 +337,10 @@ const username = document.querySelector("#username");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const repassword = document.querySelector("#re-password");
+const address = document.querySelector("#address");
 const formRegister = document.querySelector(".form-register");
 
 // Lấy dữ liệu từ localStorage
-
 function showError(e, message) {
   let parentInput = e.parentElement;
   let errorText = parentInput.querySelector("p");
@@ -380,14 +380,22 @@ function checkEmailError(input) {
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   input.value = input.value.trim();
   let isEmailError = !regexEmail.test(input.value);
-  if (!isEmailError) {
+  let isEmailSame = false;
+  const usersLocal = JSON.parse(localStorage.getItem("users")) || [];
+  usersLocal.forEach((user) => {
+    if (user.Email === input.value) isEmailSame = true;
+  });
+  if (!isEmailError && !isEmailSame) {
     showSuccess(input);
   } else {
-    showError(input, "Email không hợp lệ");
+    if (isEmailError) {
+      showError(input, "Email không hợp lệ");
+    } else {
+      showError(input, "Email này đã được đăng ký");
+    }
   }
-  return isEmailError;
+  return isEmailError || isEmailSame;
 }
-
 function checkMatchPasswordError(passwordInput, rePasswordInput) {
   if (passwordInput.value !== rePasswordInput.value)
     showError(rePasswordInput, "Mật khẩu không khớp");
@@ -425,6 +433,8 @@ formRegister.addEventListener("submit", (e) => {
       UserName: username.value,
       Email: email.value,
       Password: password.value,
+      Address: address.value,
+      OrderHistory: [],
     };
     userLocal.push(user);
     localStorage.setItem("users", JSON.stringify(userLocal));
@@ -489,13 +499,13 @@ loginSubmit.addEventListener("click", (event) => {
 });
 // -------------------------------- home ------------------------------
 var adminLoginAccount = JSON.parse(localStorage.getItem("userLogin"));
-var isAdmin = adminAccount.UserName === adminAccount.UserName ? true : false;
-console.log(localStorage.getItem("userLogin"));
+if (adminLoginAccount)
+  var isAdmin =
+    adminAccount.UserName === adminLoginAccount.UserName ? true : false;
 var isLogin = localStorage.getItem("userLogin") ? true : false;
 function reloadPage() {
   window.location.href = "index.html";
 }
-console.log(isAdmin);
 if (isLogin) {
   document.querySelector(".account-option-item.login-btn").style.display =
     "none";
@@ -516,10 +526,9 @@ function showInfo() {
 function innerInfo() {
   const infoTable = document.querySelector(".info-table");
   const userLogin = JSON.parse(localStorage.getItem("userLogin")) || [];
-  if(isAdmin)
-    infoTable.innerHTML = `Bạn đang là Admin`
+  if (isAdmin) infoTable.innerHTML = `Bạn đang là Admin`;
   else {
-  infoTable.innerHTML = `<tr>
+    infoTable.innerHTML = `<tr>
             <td>Tên:</td>
             <td>${userLogin.UserName}</td>
           </tr>
@@ -527,7 +536,11 @@ function innerInfo() {
             <td>Email:</td>
             <td>${userLogin.Email}</td>
           </tr>
-          <button class="order-history-btn">Xem lịch sử đặt hàng</button>`
+          <tr>
+            <td>Địa chỉ:</td>
+            <td>${userLogin.Address}</td>
+          </tr>
+          <button class="order-history-btn">Xem lịch sử đặt hàng</button>`;
   }
 }
 innerInfo();
@@ -537,7 +550,10 @@ function logOut() {
   isAdmin = false;
   window.location.href = "index.html";
 }
+// -------------------------------- OrderHistory ------------------------------
+
 // -------------------------------- Admin ------------------------------
 function showAdminPage() {
   window.location.href = "admin.html";
 }
+console.log(window.location.pathname);

@@ -170,15 +170,12 @@ input:focus {
 .user-cart {
   position: relative;
 }
-.total-quantity-cart {
-  width: 20px;
-  font-size: 1.5rem;
-  position: absolute;
-  color: #fff;
-  top: -5px;
-  right: -5px;
-  background-color: #dd2f2c;
-  border-radius: 50%;
+.submit-order {
+  cursor: pointer;
+  padding: 10px;
+  width: 150px;
+  background-color: #eb5757;
+  border-radius: 30px;
 }
 /*------------------------------ hero ------------------------------*/
 #hero .container {
@@ -703,6 +700,17 @@ th {
   opacity: 0.5;
   margin-top: 100px;
 }
+.total-quantity-cart {
+  width: 20px;
+  font-size: 1.5rem;
+  position: absolute;
+  color: #fff;
+  top: -5px;
+  right: -5px;
+  background-color: #dd2f2c;
+  border-radius: 50%;
+  border-left: none;
+}
 /* ------------------------------------- Info ------------------------------------ */
 .info-box {
   background-color: #fff;
@@ -816,7 +824,14 @@ th {
   font-weight: 400;
   margin-left: 10px;
 }
-
+.login-error {
+  background-color: #ffcccc;
+  color: rgb(148, 41, 41);
+  font-size: 1.4rem;
+  padding: 20px 10px;
+  margin-top: 10px;
+  display: none;
+}
 /* ------------------------------------- Register Page ------------------------------------ */
 .register-page {
   display: none;
