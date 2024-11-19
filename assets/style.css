@@ -161,7 +161,6 @@ input:focus {
   background-color: #888888;
 }
 .login-btn {
-  
 }
 .account-btn:hover + .account-option,
 .account-option:hover {
@@ -550,7 +549,6 @@ h1:hover::after {
 }
 /* ------------------------------------- Details ------------------------------------ */
 .detail-box {
-  
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -631,7 +629,6 @@ h1:hover::after {
   width: 70px;
   border: 1px solid;
   border-radius: 10px;
-
 }
 .desc-quantity,
 .plus-quantity {
@@ -905,7 +902,7 @@ th {
   color: var(--error-color);
 }
 .login-success-box,
-.register-success-box{
+.register-success-box {
   width: 800px;
   background-color: #fff;
   padding: 30px;
@@ -924,7 +921,7 @@ th {
   font-size: 50px;
   color: #12d823;
 }
-.success-title{
+.success-title {
   margin-top: 20px;
   font-size: 50px;
   font-weight: 700;
