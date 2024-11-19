@@ -24,6 +24,7 @@ searchbtn.addEventListener("click", () => {
 });
 
 function showCart() {
+  checkCartEmpty();
   document.querySelector(".cart-page").style.display = "block";
 }
 // ---------------------------------- hero slide show ---------------------------------
@@ -189,16 +190,45 @@ function quantityChange() {
 function checkCartEmpty() {
   const cartTable = document.querySelector(".cart-table");
   const cartEmpty = document.querySelector(".cart-empty");
+  const submitOrder = document.querySelector(".submit-order");
   var cartLists = document.querySelectorAll(".cart-box tbody tr");
   if (cartLists.length == 0) {
     cartTable.style.display = "none";
+    submitOrder.style.display = "none";
     cartEmpty.style.display = "block";
   } else {
     cartTable.style.display = "block";
+    submitOrder.style.display = "block";
     cartEmpty.style.display = "none";
   }
 }
-checkCartEmpty();
+function submitOrder() {
+  const userLocal = JSON.parse(localStorage.getItem("users")) || [];
+  const userLogin = JSON.parse(localStorage.getItem("userLogin")) || [];
+  const cartTable = document.querySelectorAll(".cart-table tbody tr");
+  const orders = [];
+  cartTable.forEach((cart) => {
+    const order = {
+      Img: cart.querySelector(".order-img").src,
+      Name: cart.querySelector(".order-name").innerText,
+      Price: cart.querySelector(".order-price").innerText,
+      Quantity: cart.querySelector(".order-quantity").value,
+    };
+    orders.push(order);
+  });
+  const Order = {
+    orderList: orders,
+    totalPrice: document.querySelector(".cart-table .total-price-value")
+      .innerText,
+    Status: "Đang xử lý",
+  };
+  userLogin.OrderHistory.push(Order);
+  userLocal.forEach((user) => {
+    if (user.Email === userLogin.Email) user.OrderHistory.push(Order);
+  });
+  localStorage.setItem("userLogin", JSON.stringify(userLogin));
+  localStorage.setItem("users", JSON.stringify(userLocal));
+}
 // ---------------------------------- Phan trang ---------------------------------
 // let thisPage = 1;
 // let limit = 8;
@@ -540,7 +570,7 @@ function innerInfo() {
             <td>Địa chỉ:</td>
             <td>${userLogin.Address}</td>
           </tr>
-          <button class="order-history-btn">Xem lịch sử đặt hàng</button>`;
+          <button class="order-history-btn" onclick="showHistory()">Xem lịch sử đặt hàng</button>`;
   }
 }
 innerInfo();
@@ -551,7 +581,84 @@ function logOut() {
   window.location.href = "index.html";
 }
 // -------------------------------- OrderHistory ------------------------------
-
+function addToHistory() {
+  const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+  const orders = userLogin.OrderHistory;
+  const historyBox = document.querySelector(".history-box");
+  const historyTableHead = document.querySelector(".history-table thead");
+  const historyTableBody = document.querySelector(".history-table tbody");
+  const historyTableFoot = document.querySelector(".history-table tfoot");
+  orders.forEach((order, index) => {
+    let theadcontent = "";
+    let tbodycontent = "";
+    let tfootcontent = "";
+    const addthead = document.createElement("thead");
+    const addtbody = document.createElement("tbody");
+    const addtfoot = document.createElement("tfoot");
+    const addtable = document.createElement("table");
+    addtable.classList.add("history-table");
+    // ----------------------thead---------------------
+    theadcontent = `
+          <thead>
+          <tr><td colspan="3" class="history-order-id">Đơn hàng ${
+            index + 1
+          }:</td></tr>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>Đơn giá</th>
+              <th>Số lượng</th>
+            </tr>
+          </thead>`;
+    addthead.innerHTML = theadcontent;
+    // historyBox.append(addthead);
+    // ----------------------tbody---------------------
+    order.orderList.forEach((item) => {
+      tbodycontent =
+        tbodycontent +
+        `<tr>
+              <td>
+                <img src="${item.Img}" class="history-order-img">
+                <span class="history-order-name">${item.Name}</span>
+              </td>
+              <td><span class="history-order-price">${item.Price}</span><sup>đ</sup></td>
+              <td class="history-order-quantity">${item.Quantity}</td>
+            </tr>`;
+    });
+    addtbody.innerHTML = tbodycontent;
+    // historyBox.append(addtbody);
+    // ----------------------tfoot---------------------
+    tfootcontent = `<tfoot>
+            <tr>
+              <td colspan="3" class="totalPrice">Tổng cộng: <span class="total-price-value">${order.totalPrice}</span><sup>đ</sup></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="history-order-status">Tình trạng: <span class="history-order-status-text">${order.Status}</span></td>
+            </tr>
+          </tfoot>`;
+    addtfoot.innerHTML = tfootcontent;
+    let tableContent =
+      "<table>" + theadcontent + tbodycontent + tfootcontent + "</table>";
+    addtable.innerHTML = tableContent;
+    historyBox.append(addtable);
+    console.log(addtable);
+    // historyBox.append(addtfoot);
+  });
+  checkHistoryEmpty();
+}
+function checkHistoryEmpty() {
+  const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+  const historyEmpty = document.querySelector(".history-empty");
+  const orders = userLogin.OrderHistory;
+  if (orders) {
+    historyEmpty.style.display = "none";
+  } else {
+    historyEmpty.style.display = "block";
+  }
+}
+function showHistory() {
+  addToHistory();
+  document.querySelector(".history-page").style.display = "block";
+}
 // -------------------------------- Admin ------------------------------
 function showAdminPage() {
   window.location.href = "admin.html";
