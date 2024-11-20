@@ -577,6 +577,10 @@ function innerInfo() {
             <td>${userLogin.Email}</td>
           </tr>
           <tr>
+            <td>Số điện thoại:</td>
+            <td>${userLogin.Phone}</td>
+          </tr>
+          <tr>
             <td>Địa chỉ:</td>
             <td>${userLogin.Address}</td>
           </tr>
