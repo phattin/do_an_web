@@ -367,6 +367,7 @@ const username = document.querySelector("#username");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const repassword = document.querySelector("#re-password");
+const phone = document.querySelector("#phone");
 const address = document.querySelector("#address");
 const formRegister = document.querySelector(".form-register");
 
@@ -463,6 +464,7 @@ formRegister.addEventListener("submit", (e) => {
       UserName: username.value,
       Email: email.value,
       Password: password.value,
+      Phone: phone.value,
       Address: address.value,
       OrderHistory: [],
     };
@@ -517,13 +519,21 @@ loginSubmit.addEventListener("click", (event) => {
     if (!findUser) {
       document.querySelector(".login-error").style.display = "block";
     } else {
-      setTimeout(
-        (document.querySelector(".login-success").style.display = "block"),
-        3000
-      );
-      document.querySelector(".login-error").style.display = "none";
-      localStorage.setItem("userLogin", JSON.stringify(findUser));
-      isLogin = true;
+      const userLock = JSON.parse(localStorage.getItem("userLock")) || [];
+      let isLock = false;
+      userLock.forEach((user) => {
+        if (user === emailLogin.value) isLock = true;
+      });
+      if (isLock == true) alert("Tài khoản đang bị khóa");
+      else {
+        setTimeout(
+          (document.querySelector(".login-success").style.display = "block"),
+          3000
+        );
+        document.querySelector(".login-error").style.display = "none";
+        localStorage.setItem("userLogin", JSON.stringify(findUser));
+        isLogin = true;
+      }
     }
   }
 });
@@ -584,10 +594,8 @@ function logOut() {
 function addToHistory() {
   const userLogin = JSON.parse(localStorage.getItem("userLogin"));
   const orders = userLogin.OrderHistory;
-  const historyBox = document.querySelector(".history-box");
-  const historyTableHead = document.querySelector(".history-table thead");
-  const historyTableBody = document.querySelector(".history-table tbody");
-  const historyTableFoot = document.querySelector(".history-table tfoot");
+  const historyTableList = document.querySelector(".history-table-list");
+  let tableContent = "";
   orders.forEach((order, index) => {
     let theadcontent = "";
     let tbodycontent = "";
@@ -595,8 +603,6 @@ function addToHistory() {
     const addthead = document.createElement("thead");
     const addtbody = document.createElement("tbody");
     const addtfoot = document.createElement("tfoot");
-    const addtable = document.createElement("table");
-    addtable.classList.add("history-table");
     // ----------------------thead---------------------
     theadcontent = `
           <thead>
@@ -636,13 +642,15 @@ function addToHistory() {
             </tr>
           </tfoot>`;
     addtfoot.innerHTML = tfootcontent;
-    let tableContent =
-      "<table>" + theadcontent + tbodycontent + tfootcontent + "</table>";
-    addtable.innerHTML = tableContent;
-    historyBox.append(addtable);
-    console.log(addtable);
-    // historyBox.append(addtfoot);
+    tableContent =
+      tableContent +
+      '<table class="history-table">' +
+      theadcontent +
+      tbodycontent +
+      tfootcontent +
+      "</table>";
   });
+  historyTableList.innerHTML = tableContent;
   checkHistoryEmpty();
 }
 function checkHistoryEmpty() {
