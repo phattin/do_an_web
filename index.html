@@ -196,7 +196,7 @@
               <button onclick="showASUS(event)" class="type-button"><img src="./assets/imgs/asus.jpg" class="type-item" alt="ASUS"></button>
               <button class="type-button"><img src="./assets/imgs/hp.png" class="type-item" alt="hp"></button>
             </div>
-            <div id="product-list" class="all-product-list">
+            <div id="product-list" class="all-product-list" style="display: none;">
               <!-- DELL 1 -->
               <section class="product all-product-item dell">
                 <img
@@ -205,6 +205,7 @@
                   class="product-img"
                 />
                 <p class="product-name">Laptop Dell Inspiron 15 3520 i5 1235U (N5I5052W1)</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">16.390.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">16.990.000</span><sup class="original-price">₫</sup>
@@ -223,6 +224,8 @@
                       <div class="detail-title">
                         <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/KYHD/Win11</h2>
                         <span class="detail-price">16.490.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
                         <div class="detail-original-price">
                           <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
                         </div>
@@ -241,32 +244,32 @@
                     <table class="detail-table">
                       <tr>
                         <td>Bộ xử lý:</td>
-                        <td>i5, 1235U, 1.3GHz</td>
+                        <td class="CPU">i5, 1235U, 1.3GHz</td>
                       </tr>
                       <tr>
                         <td>RAM:</td>
-                        <td>16GB</td>
+                        <td class="RAM">16GB</td>
                       </tr>
                       <tr>
                         <td>Loại RAM</td>
-                        <td>DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
                       </tr>
                       <tr>
                         <td>Ổ cứng:</td>
-                        <td>512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
                           Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
                       </tr>
                       <tr>
                         <td>Card:</td>
-                        <td>Intel Iris Xe</td>
+                        <td class="card">Intel Iris Xe</td>
                       </tr>
                       <tr>
                         <td>Pin:</td>
-                        <td>3-cell, 41Wh</td>
+                        <td class="pin">3-cell, 41Wh</td>
                       </tr>
                       <tr>
                         <td>Khối lượng:</td>
-                        <td>1.9 kg</td>
+                        <td class="weight">1.9 kg</td>
                       </tr>
                     </table>
                   </div>
@@ -280,6 +283,7 @@
                   class="product-img"
                 />
                 <p class="product-name">Laptop Dell Inspiron 15 3520 i5 1235U</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">16.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">16.990.000</span><sup class="original-price">₫</sup>
@@ -298,6 +302,8 @@
                       <div class="detail-title">
                         <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
                         <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
                         <div class="detail-original-price">
                           <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
                         </div>
@@ -316,32 +322,32 @@
                     <table class="detail-table">
                       <tr>
                         <td>Bộ xử lý:</td>
-                        <td>Intel Core i5 Alder Lake - 1235U</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
                       </tr>
                       <tr>
                         <td>RAM:</td>
-                        <td>16GB</td>
+                        <td class="RAM">16GB</td>
                       </tr>
                       <tr>
                         <td>Loại RAM</td>
-                        <td>DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
                       </tr>
                       <tr>
                         <td>Ổ cứng:</td>
-                        <td>512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
                           Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
                       </tr>
                       <tr>
                         <td>Card:</td>
-                        <td>Intel Iris Xe</td>
+                        <td class="card">Intel Iris Xe</td>
                       </tr>
                       <tr>
                         <td>Pin:</td>
-                        <td>3-cell, 41Wh</td>
+                        <td class="pin">3-cell, 41Wh</td>
                       </tr>
                       <tr>
                         <td>Khối lượng:</td>
-                        <td>1.66 kg</td>
+                        <td class="weight">1.66 kg</td>
                       </tr>
                     </table>
                   </div>
@@ -355,6 +361,7 @@
                   class="product-img"
                 />
                 <p class="product-name">Dell Latitude 3440 i5 1235U</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">16.990.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">18.990.000</span><sup class="original-price">₫</sup>
@@ -366,6 +373,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- ASUS 1 -->
               <section class="product all-product-item">
@@ -375,6 +440,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Asus</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -386,6 +452,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- ASUS 2 -->
               <section class="product all-product-item asus">
@@ -395,6 +519,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Asus</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -406,6 +531,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- ASUS 3 -->
               <section class="product all-product-item asus">
@@ -415,6 +598,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Asus</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -426,6 +610,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- DELL 4 -->
               <section class="product all-product-item asus dell">
@@ -435,6 +677,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -446,6 +689,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- DELL 5 -->
               <section class="product all-product-item dell">
@@ -455,6 +756,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -466,6 +768,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- DELL 6 -->
               <section class="product all-product-item dell">
@@ -475,6 +835,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -486,6 +847,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- DELL 7 -->
               <section class="product all-product-item dell">
@@ -495,6 +914,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -506,6 +926,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- DELL 8 -->
               <section class="product all-product-item dell">
@@ -515,6 +993,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -526,6 +1005,64 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop Dell Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
               <!-- DELL 9 -->
               <section class="product all-product-item dell">
@@ -535,6 +1072,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">Dell</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -546,8 +1084,66 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop HP Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
               </section>
-              <!-- product 3 -->
+              <!-- HP 1 -->
               <section class="product all-product-item">
                 <img
                   src="./assets/imgs/laptop1.avif"
@@ -555,6 +1151,7 @@
                   class="product-img"
                 />
                 <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+                <div class="product-brand" style="display: none;">HP</div>
                 <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
                 <div class="product-original-price">
                   <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
@@ -566,127 +1163,66 @@
                 <i class="fa-solid fa-cart-shopping add-cart">
                   <div class="note">Thêm vào giỏ hàng</div>
                 </i>
-              </section>
-              <!-- product 3 -->
-              <section class="product all-product-item">
-                <img
-                  src="./assets/imgs/laptop1.avif"
-                  alt=""
-                  class="product-img"
-                />
-                <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
-                <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
-                <div class="product-original-price">
-                  <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
-                  <span class="sale-value">-23%</span>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">Laptop HP Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+                        <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+                        
+                        <div class="product-quantity">3</div>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">Intel Core i5 Alder Lake - 1235U</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">16GB</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+                          Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">Intel Iris Xe</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">3-cell, 41Wh</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">1.66 kg</td>
+                      </tr>
+                    </table>
+                  </div>
                 </div>
-                <i class="fa-regular fa-eye more-details">
-                  <div class="note">Xem thêm thông tin</div>
-                </i>
-                <i class="fa-solid fa-cart-shopping add-cart">
-                  <div class="note">Thêm vào giỏ hàng</div>
-                </i>
               </section>
-              <!-- product 3 -->
-              <section class="product all-product-item">
-                <img
-                  src="./assets/imgs/laptop1.avif"
-                  alt=""
-                  class="product-img"
-                />
-                <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
-                <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
-                <div class="product-original-price">
-                  <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
-                  <span class="sale-value">-23%</span>
-                </div>
-                <i class="fa-regular fa-eye more-details">
-                  <div class="note">Xem thêm thông tin</div>
-                </i>
-                <i class="fa-solid fa-cart-shopping add-cart">
-                  <div class="note">Thêm vào giỏ hàng</div>
-                </i>
-              </section>
-              <!-- product 3 -->
-              <section class="product all-product-item">
-                <img
-                  src="./assets/imgs/laptop1.avif"
-                  alt=""
-                  class="product-img"
-                />
-                <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
-                <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
-                <div class="product-original-price">
-                  <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
-                  <span class="sale-value">-23%</span>
-                </div>
-                <i class="fa-regular fa-eye more-details">
-                  <div class="note">Xem thêm thông tin</div>
-                </i>
-                <i class="fa-solid fa-cart-shopping add-cart">
-                  <div class="note">Thêm vào giỏ hàng</div>
-                </i>
-              </section>
-              <!-- product 3 -->
-              <section class="product all-product-item">
-                <img
-                  src="./assets/imgs/laptop1.avif"
-                  alt=""
-                  class="product-img"
-                />
-                <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
-                <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
-                <div class="product-original-price">
-                  <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
-                  <span class="sale-value">-23%</span>
-                </div>
-                <i class="fa-regular fa-eye more-details">
-                  <div class="note">Xem thêm thông tin</div>
-                </i>
-                <i class="fa-solid fa-cart-shopping add-cart">
-                  <div class="note">Thêm vào giỏ hàng</div>
-                </i>
-              </section>
-              <!-- product 3 -->
-              <section class="product all-product-item">
-                <img
-                  src="./assets/imgs/laptop1.avif"
-                  alt=""
-                  class="product-img"
-                />
-                <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
-                <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
-                <div class="product-original-price">
-                  <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
-                  <span class="sale-value">-23%</span>
-                </div>
-                <i class="fa-regular fa-eye more-details">
-                  <div class="note">Xem thêm thông tin</div>
-                </i>
-                <i class="fa-solid fa-cart-shopping add-cart">
-                  <div class="note">Thêm vào giỏ hàng</div>
-                </i>
-              </section>
-              <!-- product 3 -->
-              <section class="product all-product-item">
-                <img
-                  src="./assets/imgs/laptop1.avif"
-                  alt=""
-                  class="product-img"
-                />
-                <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
-                <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
-                <div class="product-original-price">
-                  <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
-                  <span class="sale-value">-23%</span>
-                </div>
-                <i class="fa-regular fa-eye more-details">
-                  <div class="note">Xem thêm thông tin</div>
-                </i>
-                <i class="fa-solid fa-cart-shopping add-cart">
-                  <div class="note">Thêm vào giỏ hàng</div>
-                </i>
-              </section>
+      
             </div>
             <div class="listPage">
             </div>

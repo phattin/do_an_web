@@ -1,17 +1,33 @@
+// -------------------------------- clear input ------------------------------
+function clearInput(inputs) {
+  inputs.forEach((input) => {
+    input.value = "";
+    if (input.tagName === "IMG") {
+      input.src = "";
+    }
+  });
+}
+
 // -------------------------------- hidden Orverlay ------------------------------
-const overlayArr = document.querySelectorAll(".overlay");
-overlayArr.forEach((overlays) => {
-  overlays.addEventListener("click", (event) => {
-    if (event.target === overlays) overlays.style.display = "none";
+function hideOverlay() {
+  const overlayArr = document.querySelectorAll(".overlay");
+  overlayArr.forEach((overlays) => {
+    overlays.addEventListener("click", (event) => {
+      if (event.target === overlays) {
+        overlays.style.removeProperty("display");
+        overlays.style.display = "none";
+      }
+    });
   });
-});
-const closes = document.querySelectorAll(".close");
-closes.forEach((closebtn) => {
-  closebtn.addEventListener("click", () => {
-    closebtn.parentElement.parentElement.style.display = "none";
+  const closes = document.querySelectorAll(".close");
+  closes.forEach((closebtn) => {
+    closebtn.addEventListener("click", () => {
+      closebtn.parentElement.parentElement.style.display = "none";
+    });
   });
-});
-// ---------------------------------- top menu ---------------------------------
+}
+hideOverlay;
+//------------------------------- top menu ---------------------------------
 document.getElementById("logo").addEventListener("click", function () {
   window.location.href = "index.html"; // Thay đổi "index.html" thành đường dẫn của trang chủ của bạn
 });
@@ -66,14 +82,9 @@ prevHero.addEventListener("click", () => {
   dots[currentImg].classList.add("active");
 });
 // ---------------------------------- Detail ---------------------------------
-const detailbtns = document.querySelectorAll(".more-details");
-detailbtns.forEach((detailbtn) => {
-  detailbtn.addEventListener("click", () => {
-    let section = detailbtn.closest("section");
-    let overlay = section.querySelector(".overlay");
-    overlay.style.display = "block";
-  });
-});
+function showDetail(detailElement) {
+  detailElement.parentElement.querySelector(".overlay").style.display = "block";
+}
 function decreaseQuantity(minusElement) {
   var detailQuantity = minusElement.parentElement.querySelector(
     ".detail-quantity-value"
@@ -103,6 +114,10 @@ detailQuantityList.forEach((inputNumber) => {
 const addCartBtns = document.querySelectorAll(".add-cart-btn");
 addCartBtns.forEach((addCartbtn) => {
   addCartbtn.addEventListener("click", (event) => {
+    if (isLogin == false) {
+      alert("Vui lòng đăng nhập để thêm vào giỏ hàng");
+      return;
+    }
     var productCB =
       event.target.parentElement.parentElement.parentElement.parentElement
         .parentElement.parentElement;
@@ -121,6 +136,10 @@ const cartBox = document.querySelector(".cart-box");
 const addCarts = document.querySelectorAll(".add-cart");
 addCarts.forEach((addCart) => {
   addCart.addEventListener("click", (event) => {
+    if (isLogin == false) {
+      alert("Vui lòng đăng nhập để thêm vào giỏ hàng");
+      return;
+    }
     var productC = event.target.parentElement;
     var productImg = productC.querySelector(".product-img").src;
     var productName = productC.querySelector(".product-name").innerText;
@@ -470,6 +489,7 @@ formRegister.addEventListener("submit", (e) => {
     };
     userLocal.push(user);
     localStorage.setItem("users", JSON.stringify(userLocal));
+    clearInput([username, email, password, phone, address]);
   }
 });
 // --------------------------------------------- Login Page-----------------------------------
@@ -532,6 +552,7 @@ loginSubmit.addEventListener("click", (event) => {
         );
         document.querySelector(".login-error").style.display = "none";
         localStorage.setItem("userLogin", JSON.stringify(findUser));
+        clearInput([emailLogin, passwordLogin]);
         isLogin = true;
       }
     }
@@ -675,4 +696,203 @@ function showHistory() {
 function showAdminPage() {
   window.location.href = "admin.html";
 }
-console.log(window.location.pathname);
+// -------------------------------- Product ------------------------------
+
+` <section class="product all-product-item dell">
+    <img
+    src="./assets/imgs/dell9.jpg"
+    alt=""
+    class="product-img"
+    />
+    <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
+    <div class="product-brand" style="display: none;">Dell</div>
+    <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
+    <div class="product-original-price">
+    <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
+    <span class="sale-value">-23%</span>
+    </div>
+    <i class="fa-regular fa-eye more-details">
+    <div class="note">Xem thêm thông tin</div>
+    </i>
+    <i class="fa-solid fa-cart-shopping add-cart">
+    <div class="note">Thêm vào giỏ hàng</div>
+    </i>
+    <div class="overlay" >
+    <div class="detail-box">
+      <i class="fa-solid fa-rectangle-xmark close"></i>
+      <section class="detail-head">
+        <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
+        <div class="detail-title">
+          <h2 class="detail-heading">Laptop HP Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
+          <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
+          <div class="detail-original-price">
+            <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
+          </div>
+          <div class="product-quantity">3</div>
+          <div class="detail-quantity">
+            <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+            <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+            <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+          </div>
+          <div class="detail-btn">
+            <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+            <button class="buy-btn">Mua ngay</button>
+          </div>
+        </div>
+      </section>
+      <h3 class="detail-heading">Thông tin chi tiết</h3>
+      <table class="detail-table">
+        <tr>
+          <td>Bộ xử lý:</td>
+          <td>Intel Core i5 Alder Lake - 1235U</td>
+        </tr>
+        <tr>
+          <td>RAM:</td>
+          <td>16GB</td>
+        </tr>
+        <tr>
+          <td>Loại RAM</td>
+          <td>DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
+        </tr>
+        <tr>
+          <td>Ổ cứng:</td>
+          <td>512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
+            Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
+        </tr>
+        <tr>
+          <td>Card:</td>
+          <td>Intel Iris Xe</td>
+        </tr>
+        <tr>
+          <td>Pin:</td>
+          <td>3-cell, 41Wh</td>
+        </tr>
+        <tr>
+          <td>Khối lượng:</td>
+          <td>1.66 kg</td>
+        </tr>
+      </table>
+    </div>
+    </div>
+</section> `;
+
+if (!localStorage.getItem("flagAddProduct")) {
+  let products = [];
+  const productListItem = document.querySelectorAll(".all-product-item");
+  productListItem.forEach((item, index) => {
+    const product = {
+      ID: Math.round(Math.random() * 10000000000),
+      Img: item.querySelector(".product-img").src,
+      Name: item.querySelector(".product-name").innerText,
+      Brand: item.querySelector(".product-brand").innerText,
+      Price: item.querySelector(".product-price").innerText,
+      Quantity: item.querySelector(".product-quantity").innerText,
+      OriginalPrice: item.querySelector(
+        ".product-original-price .original-price"
+      ).innerText,
+      Detail: {
+        Img: item.querySelector(".detail-img").src,
+        Name: item.querySelector(".detail-heading").innerText,
+        CPU: item.querySelector(".CPU").innerText,
+        RAM: item.querySelector(".RAM").innerText,
+        RAMType: item.querySelector(".RAM-type").innerText,
+        HardDisk: item.querySelector(".hard-disk").innerText,
+        Card: item.querySelector(".card").innerText,
+        Pin: item.querySelector(".pin").innerText,
+        Weight: item.querySelector(".weight").innerText,
+      },
+    };
+    products.push(product);
+  });
+  localStorage.setItem("products", JSON.stringify(products));
+  localStorage.setItem("flagAddProduct", JSON.stringify("1"));
+}
+function displayProduct() {
+  const products = JSON.parse(localStorage.getItem("products"));
+  const productContainer = document.querySelector("#all-product .container");
+  const productList = document.createElement("div");
+  productList.classList.add("all-product-list");
+  productList.id = "product-list";
+  let productListContent = "";
+  products.forEach((item) => {
+    productListContent += `<section class="product all-product-item dell">
+                <img
+                  src="${item.Img}"
+                  alt=""
+                  class="product-img"
+                />
+                <p class="product-name">${item.Name}(N5I5052W1)</p>
+                <div class="product-brand" style="display: none;">${item.Brand}</div>
+                <span class="product-price">${item.Price}</span><sup class="sale-price">₫</sup>
+                <div class="product-original-price">
+                  <span class="original-price">${item.OriginalPrice}</span><sup class="original-price">₫</sup>
+                </div>
+                <i class="fa-regular fa-eye more-details" onclick="showDetail(this)">
+                  <div class="note">Xem thêm thông tin</div>
+                </i>
+                <i class="fa-solid fa-cart-shopping add-cart">
+                  <div class="note">Thêm vào giỏ hàng</div>
+                </i>
+                <div class="overlay" >
+                  <div class="detail-box">
+                    <i class="fa-solid fa-rectangle-xmark close"></i>
+                    <section class="detail-head">
+                      <img src="./assets/imgs/dell2d.jpg" alt="" class="detail-img">
+                      <div class="detail-title">
+                        <h2 class="detail-heading">${item.Detail.Name}</h2>
+                        <span class="detail-price">${item.Price}</span><sup class="sale-price">₫</sup>
+                        <div class="detail-original-price">
+                          <span class="detail-original-price-value">${item.OriginalPrice}</span><sup class="sale-price">₫</sup>
+                        </div>
+                        <div class="product-quantity">Kho: ${item.Quantity}</div>
+                        <div class="detail-quantity">
+                          <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
+                          <input type="number" class="detail-quantity-value" value="1" min="1"></input>
+                          <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
+                        </div>
+                        <div class="detail-btn">
+                          <button class="add-cart-btn">Thêm vào giỏ hàng</button>
+                          <button class="buy-btn">Mua ngay</button>
+                        </div>
+                      </div>
+                    </section>
+                    <h3 class="detail-heading">Thông tin chi tiết</h3>
+                    <table class="detail-table">
+                      <tr>
+                        <td>Bộ xử lý:</td>
+                        <td class="CPU">${item.Detail.CPU}</td>
+                      </tr>
+                      <tr>
+                        <td>RAM:</td>
+                        <td class="RAM">${item.Detail.RAM}</td>
+                      </tr>
+                      <tr>
+                        <td>Loại RAM</td>
+                        <td class="RAM-type">${item.Detail.RAMType}</td>
+                      </tr>
+                      <tr>
+                        <td>Ổ cứng:</td>
+                        <td class="hard-disk">${item.Detail.HardDisk}</td>
+                      </tr>
+                      <tr>
+                        <td>Card:</td>
+                        <td class="card">${item.Detail.Card}</td>
+                      </tr>
+                      <tr>
+                        <td>Pin:</td>
+                        <td class="pin">${item.Detail.Pin}</td>
+                      </tr>
+                      <tr>
+                        <td>Khối lượng:</td>
+                        <td class="weight">${item.Detail.Weight}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </section>`;
+  });
+  productList.innerHTML = productListContent;
+  productContainer.append(productList);
+  hideOverlay();
+}
+displayProduct();

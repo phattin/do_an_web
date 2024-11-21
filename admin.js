@@ -5,7 +5,24 @@
     form.classList.remove(mode === "open" ? "disable" : "enable");
     form.classList.add(mode === "open" ? "enable" : "disable");
   }
-
+  function hideOverlay() {
+    const overlayArr = document.querySelectorAll(".overlay") || [];
+    overlayArr.forEach((overlays) => {
+      overlays.addEventListener("click", (event) => {
+        if (event.target === overlays) {
+          overlays.style.removeProperty("display");
+          overlays.style.display = "none";
+        }
+      });
+    });
+    console.log(overlayArr);
+    const closes = document.querySelectorAll(".close") || [];
+    closes.forEach((closebtn) => {
+      closebtn.addEventListener("click", () => {
+        closebtn.parentElement.parentElement.style.display = "none";
+      });
+    });
+  }
   function clearInput(inputs) {
     inputs.forEach((input) => {
       input.value = "";
@@ -80,6 +97,7 @@
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  hideOverlay();
   // side menu
   const sp = document.getElementById("side-menu__menu-sp");
   const donHang = document.getElementById("side-menu__menu-order");
@@ -542,7 +560,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Do something if the button in items are clicked
 
   //--------------------------------- Customer -----------------------------
-  function addCustomer() {
+  function addCustomertoTable() {
     const userLocal = JSON.parse(localStorage.getItem("users"));
     let customerContent = "";
     userLocal.forEach((user) => {
@@ -559,5 +577,93 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     document.querySelector("#customer__list-body").innerHTML = customerContent;
   }
-  addCustomer();
+  addCustomertoTable();
+  //--------------------------------- Product -----------------------------
+  function addProducttoTable() {
+    const products = JSON.parse(localStorage.getItem("products"));
+    let productContent = "";
+    products.forEach((product) => {
+      productContent += `<tr>
+                    <td class="product__id">${product.ID}</td>
+                    <td class="product__name">${product.Name}</td>
+                    <td class="product__quantity">${product.Quantity}</td>
+                    <td class="product__price">${product.Price}</td>
+                    <td>Chi tiết</td>
+                    <td class="product__img"><img src="${product.Img}" /></td>
+                    <td>
+                      <i class="fa-regular fa-pen-to-square"></i>
+                      <i class="fa-solid fa-trash"></i>
+                    </td>
+                  </tr>`;
+    });
+    document.querySelector("#product__list-body").innerHTML = productContent;
+  }
+  addProducttoTable();
 });
+// submit item's info => if have value in the inputs => submit
+function addOneProduct() {
+  submitItem.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (!inputFilled([tenSP, soluongSP, giaSP, chitietSP, hinhSP])) {
+      return false;
+    } else if (isNaN(soluongSP.value)) {
+      alert("Vui lòng nhập số.");
+      soluongSP.focus();
+      return false;
+    } else if (isNaN(giaSP.value)) {
+      alert("Vui lòng nhập số.");
+      giaSP.focus();
+      return false;
+    }
+    // bring values into table
+    else {
+      // do the thing
+      productArray[productID - 1] = {
+        id: `SP#${productID}`,
+        name: tenSP.value,
+        sl: soluongSP.value,
+        gia: giaSP.value,
+        describe: chitietSP.value,
+        imageName: hinhSP.value,
+        imageSrc: hinhSP.src,
+        status: "show",
+      };
+
+      try {
+        document.getElementById("product__list-body").innerHTML += `
+                      <tr id="${productArray[productID - 1].id}">
+                          <td>${productArray[productID - 1].id}</td>
+                          <td>${productArray[productID - 1].name}</td>
+                          <td>${productArray[productID - 1].sl}</td>
+                          <td>${productArray[productID - 1].gia}</td>
+                          <td style="overflow-y: auto;">${
+                            productArray[productID - 1].describe
+                          }</td>
+                          <td><img src="${
+                            productArray[productID - 1].imageSrc
+                          }" style="max-width: 100%;" alt="Photo of ${
+          productArray[productID - 1].name
+        }"></td>
+                          <td><i class="fa-regular fa-pen-to-square"></i>  <i class="fa-solid fa-trash"></i></td>
+                      </tr>
+                  `;
+
+        // store data into localStorage
+        if (localStorage.getItem("products")) {
+          localStorage.removeItem("products");
+        }
+        localStorage.setItem("products", JSON.stringify(productArray));
+
+        productID++;
+      } catch (e) {
+        alert("Cannot submit data because of exceeding storage!" + e);
+        productArray.splice(productID - 1, 1);
+      }
+
+      // make all the input empty
+      clearInput([tenSP, soluongSP, giaSP, chitietSP, hinhSP]);
+      document.querySelector(".form__preview").src =
+        "./assets/imgs/no-photo-or-blank-image.jpg";
+    }
+  });
+}
