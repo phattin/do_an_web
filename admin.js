@@ -15,7 +15,6 @@
         }
       });
     });
-    console.log(overlayArr);
     const closes = document.querySelectorAll(".close") || [];
     closes.forEach((closebtn) => {
       closebtn.addEventListener("click", () => {
@@ -65,34 +64,47 @@
   }
 
   // if admin upload image & submit => show image (look this shit again)
-  function getImageUrl(id) {
-    let input = document.getElementById(id);
-    input.addEventListener("change", function (event) {
-      const imagefile = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        input.src = e.target.result;
+  // function getImageUrl(id) {
+  //   let input = document.getElementById(id);
+  //   input.addEventListener("change", function (event) {
+  //     const imagefile = event.target.files[0];
+  //     const reader = new FileReader();
+  //     reader.onload = function (e) {
+  //       input.src = e.target.result;
+  //     };
+  //     reader.readAsDataURL(imagefile);
+  //   });
+  // }
+
+  // function changePreview(inputElement) {
+  //   console.log(inputElement.parentElement)
+  //   const preview = inputElement.parentElement.querySelector('.form__preview')
+  //   preview.src = document.getElementById(this).src;
+  // }
+  function uploadImg(inputElement) {
+    const preview = inputElement.parentElement.querySelector(".form__preview");
+    const fileSelected = inputElement.files;
+    if (fileSelected.length > 0) {
+      const fileToLoad = fileSelected[0];
+      const fileReader = new FileReader();
+      fileReader.onload = function (fileLoaderEvent) {
+        const srcNew = fileLoaderEvent.target.result;
+        preview.src = srcNew;
       };
-      reader.readAsDataURL(imagefile);
-    });
+      fileReader.readAsDataURL(fileToLoad);
+    }
   }
-
-  function changePreview(id) {
-    let preview = document
-      .getElementById(id)
-      .closest("form")
-      .querySelector(".form__preview");
-    preview.src = document.getElementById(id).src;
+  function toggleMoreDetail() {
+    const moreDetail = document.querySelector(".form__sp-description-more");
+    const moreDisplayStyle = window.getComputedStyle(moreDetail).display;
+    if (moreDisplayStyle === "none") {
+      moreDetail.style.display = "block"; // Hiển thị phần tử
+    } else {
+      moreDetail.style.display = "none"; // Ẩn phần tử
+    }
   }
-
-  // close forms before opening one
-  function closeForm() {
-    const forms = ["product__add", "product__edit", "product__remove"];
-    forms.forEach((form) => {
-      if (document.getElementById(form).classList.contains("enable")) {
-        toggleForm(form, "close");
-      }
-    });
+  function showProductAdd() {
+    document.querySelector(".product__add").style.display = "block";
   }
 }
 
@@ -109,13 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const editItem = document.getElementById("product__btn-edit-item");
   const removeItem = document.getElementById("product__btn-remove-item");
 
-  const closeWindowItem = document.getElementById("form__close-add-item");
-  const closeWindowEditItem = document.getElementById("form__close-edit-item");
-  const closeWindowRemoveItem = document.getElementById(
-    "form__close-remove-item"
-  );
-
-  const submitItem = document.getElementById("form__submit");
   const submitEditItem = document.getElementById("form__submit-edit-item");
   const submitRemoveItem = document.getElementById("form__submit-remove-item");
 
@@ -214,297 +219,240 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // open form to add products
-    addItem.addEventListener("click", function () {
-      closeForm();
-      // open product__add
-      document.querySelector(".form__preview").src =
-        "./assets/imgs/no-photo-or-blank-image.jpg";
-      toggleForm("product__add", "open");
-      getImageUrl("form__sp-img");
-
-      // then autofocus the first input
-      tenSP.focus();
-    });
 
     // open form to edit products
-    editItem.addEventListener("click", function () {
-      closeForm();
-      toggleForm("product__edit", "open");
-      getImageUrl("form__edit-img");
-
-      // then autofocus the first input
-      editIdSP.focus();
-    });
-
-    // open form to remove products
-    removeItem.addEventListener("click", function () {
-      closeForm();
-      // open product__remove
-      toggleForm("product__remove", "open");
-      removeIdSP.focus();
-    });
-
     // open form to add orders
-
-    // close item form.
-    closeWindowItem.addEventListener("click", function () {
-      // make all the input empty
-      clearInput([tenSP, soluongSP, giaSP, chitietSP, hinhSP]);
-      // then close it
-      toggleForm("product__add", "close");
-    });
-
-    // close edit window
-    closeWindowEditItem.addEventListener("click", function () {
-      // make all the input empty
-      clearInput([
-        editIdSP,
-        editTenSP,
-        editSoluongSP,
-        editGiaSP,
-        editChitietSP,
-        editHinhSP,
-      ]);
-      // then close it
-      toggleForm("product__edit", "close");
-    });
-
-    // close remove window
-    closeWindowRemoveItem.addEventListener("click", function () {
-      clearInput([removeIdSP]);
-      toggleForm("product__remove", "close");
-    });
   }
 
   // submit item's info => if have value in the inputs => submit
-  {
-    submitItem.addEventListener("click", function (event) {
-      event.preventDefault();
-      if (!inputFilled([tenSP, soluongSP, giaSP, chitietSP, hinhSP])) {
-        return false;
-      } else if (isNaN(soluongSP.value)) {
-        alert("Vui lòng nhập số.");
-        soluongSP.focus();
-        return false;
-      } else if (isNaN(giaSP.value)) {
-        alert("Vui lòng nhập số.");
-        giaSP.focus();
-        return false;
-      }
-      // bring values into table
-      else {
-        // do the thing
-        productArray[productID - 1] = {
-          id: `SP#${productID}`,
-          name: tenSP.value,
-          sl: soluongSP.value,
-          gia: giaSP.value,
-          describe: chitietSP.value,
-          imageName: hinhSP.value,
-          imageSrc: hinhSP.src,
-          status: "show",
-        };
+  // {
+  //   submitItem.addEventListener("click", function (event) {
+  //     event.preventDefault();
+  //     if (!inputFilled([tenSP, soluongSP, giaSP, chitietSP, hinhSP])) {
+  //       return false;
+  //     } else if (isNaN(soluongSP.value)) {
+  //       alert("Vui lòng nhập số.");
+  //       soluongSP.focus();
+  //       return false;
+  //     } else if (isNaN(giaSP.value)) {
+  //       alert("Vui lòng nhập số.");
+  //       giaSP.focus();
+  //       return false;
+  //     }
+  //     // bring values into table
+  //     else {
+  //       // do the thing
+  //       productArray[productID - 1] = {
+  //         id: `SP#${productID}`,
+  //         name: tenSP.value,
+  //         sl: soluongSP.value,
+  //         gia: giaSP.value,
+  //         describe: chitietSP.value,
+  //         imageName: hinhSP.value,
+  //         imageSrc: hinhSP.src,
+  //         status: "show",
+  //       };
 
-        try {
-          document.getElementById("product__list-body").innerHTML += `
-                        <tr id="${productArray[productID - 1].id}">
-                            <td>${productArray[productID - 1].id}</td>
-                            <td>${productArray[productID - 1].name}</td>
-                            <td>${productArray[productID - 1].sl}</td>
-                            <td>${productArray[productID - 1].gia}</td>
-                            <td style="overflow-y: auto;">${
-                              productArray[productID - 1].describe
-                            }</td>
-                            <td><img src="${
-                              productArray[productID - 1].imageSrc
-                            }" style="max-width: 100%;" alt="Photo of ${
-            productArray[productID - 1].name
-          }"></td>
-                            <td><i class="fa-regular fa-pen-to-square"></i>  <i class="fa-solid fa-trash"></i></td>
-                        </tr>
-                    `;
+  //       try {
+  //         document.getElementById("product__list-body").innerHTML += `
+  //                       <tr id="${productArray[productID - 1].id}">
+  //                           <td>${productArray[productID - 1].id}</td>
+  //                           <td>${productArray[productID - 1].name}</td>
+  //                           <td>${productArray[productID - 1].sl}</td>
+  //                           <td>${productArray[productID - 1].gia}</td>
+  //                           <td style="overflow-y: auto;">${
+  //                             productArray[productID - 1].describe
+  //                           }</td>
+  //                           <td><img src="${
+  //                             productArray[productID - 1].imageSrc
+  //                           }" style="max-width: 100%;" alt="Photo of ${
+  //           productArray[productID - 1].name
+  //         }"></td>
+  //                           <td><i class="fa-regular fa-pen-to-square"></i>  <i class="fa-solid fa-trash"></i></td>
+  //                       </tr>
+  //                   `;
 
-          // store data into localStorage
-          if (localStorage.getItem("products")) {
-            localStorage.removeItem("products");
-          }
-          localStorage.setItem("products", JSON.stringify(productArray));
+  //         // store data into localStorage
+  //         if (localStorage.getItem("products")) {
+  //           localStorage.removeItem("products");
+  //         }
+  //         localStorage.setItem("products", JSON.stringify(productArray));
 
-          productID++;
-        } catch (e) {
-          alert("Cannot submit data because of exceeding storage!" + e);
-          productArray.splice(productID - 1, 1);
-        }
+  //         productID++;
+  //       } catch (e) {
+  //         alert("Cannot submit data because of exceeding storage!" + e);
+  //         productArray.splice(productID - 1, 1);
+  //       }
 
-        // make all the input empty
-        clearInput([tenSP, soluongSP, giaSP, chitietSP, hinhSP]);
-        document.querySelector(".form__preview").src =
-          "./assets/imgs/no-photo-or-blank-image.jpg";
-      }
-    });
+  //       // make all the input empty
+  //       clearInput([tenSP, soluongSP, giaSP, chitietSP, hinhSP]);
+  //       document.querySelector(".form__preview").src =
+  //         "./assets/imgs/no-photo-or-blank-image.jpg";
+  //     }
+  //   });
 
-    // edit has error
-    submitEditItem.addEventListener("click", function (event) {
-      event.preventDefault();
-      // if id is null
-      if (!inputFilled([editIdSP])) {
-        alert("Vui lòng nhập ID của sản phẩm");
-        editIdSP.focus();
-        return false;
-      } else if (findId(editIdSP.value, productArray) == -1) {
-        alert("Không tìm thấy được sản phẩm.");
-        editIdSP.focus();
-        return false;
-      }
+  // edit has error
+  // submitEditItem.addEventListener("click", function (event) {
+  //   event.preventDefault();
+  //   // if id is null
+  //   if (!inputFilled([editIdSP])) {
+  //     alert("Vui lòng nhập ID của sản phẩm");
+  //     editIdSP.focus();
+  //     return false;
+  //   } else if (findId(editIdSP.value, productArray) == -1) {
+  //     alert("Không tìm thấy được sản phẩm.");
+  //     editIdSP.focus();
+  //     return false;
+  //   }
 
-      // if there are tuples that are empty
-      else if (
-        !inputFilled([
-          editTenSP,
-          editSoluongSP,
-          editGiaSP,
-          editChitietSP,
-          editHinhSP,
-        ])
-      ) {
-        if (
-          confirm(
-            "Các trường bị bỏ trống sẽ được sử dụng dữ liệu cũ, bạn có chắc chứ?"
-          )
-        ) {
-          console.log("Using old data...");
-          let index = findId(editIdSP.value, productArray);
-          console.log(`Update data using index ${index}`);
-          while (
-            returnInputNotFilled([
-              editTenSP,
-              editSoluongSP,
-              editGiaSP,
-              editChitietSP,
-              editHinhSP,
-            ]) != -1
-          ) {
-            let input = returnInputNotFilled([
-              editTenSP,
-              editSoluongSP,
-              editGiaSP,
-              editChitietSP,
-              editHinhSP,
-            ]);
-            switch (input) {
-              case editTenSP:
-                input.value = productArray[index].name;
-                console.log(`Complete edit name: ${input.value}`);
-                break;
-              case editSoluongSP:
-                input.value = productArray[index].sl;
-                console.log(`Complete edit quantity: ${input.value}`);
-                break;
-              case editGiaSP:
-                input.value = productArray[index].gia;
-                console.log(`Complete edit price: ${input.value}`);
-                break;
-              case editChitietSP:
-                input.value = productArray[index].describe;
-                console.log(`Complete edit description: ${input.value}`);
-                break;
-              case editHinhSP:
-                input.src = productArray[index].imageSrc;
-                console.log(`Complete edit image: ${input.value}`);
-                break;
-              default:
-                break;
-            }
-          }
-        } else return false;
-      }
+  //   // if there are tuples that are empty
+  //   else if (
+  //     !inputFilled([
+  //       editTenSP,
+  //       editSoluongSP,
+  //       editGiaSP,
+  //       editChitietSP,
+  //       editHinhSP,
+  //     ])
+  //   ) {
+  //     if (
+  //       confirm(
+  //         "Các trường bị bỏ trống sẽ được sử dụng dữ liệu cũ, bạn có chắc chứ?"
+  //       )
+  //     ) {
+  //       console.log("Using old data...");
+  //       let index = findId(editIdSP.value, productArray);
+  //       console.log(`Update data using index ${index}`);
+  //       while (
+  //         returnInputNotFilled([
+  //           editTenSP,
+  //           editSoluongSP,
+  //           editGiaSP,
+  //           editChitietSP,
+  //           editHinhSP,
+  //         ]) != -1
+  //       ) {
+  //         let input = returnInputNotFilled([
+  //           editTenSP,
+  //           editSoluongSP,
+  //           editGiaSP,
+  //           editChitietSP,
+  //           editHinhSP,
+  //         ]);
+  //         switch (input) {
+  //           case editTenSP:
+  //             input.value = productArray[index].name;
+  //             console.log(`Complete edit name: ${input.value}`);
+  //             break;
+  //           case editSoluongSP:
+  //             input.value = productArray[index].sl;
+  //             console.log(`Complete edit quantity: ${input.value}`);
+  //             break;
+  //           case editGiaSP:
+  //             input.value = productArray[index].gia;
+  //             console.log(`Complete edit price: ${input.value}`);
+  //             break;
+  //           case editChitietSP:
+  //             input.value = productArray[index].describe;
+  //             console.log(`Complete edit description: ${input.value}`);
+  //             break;
+  //           case editHinhSP:
+  //             input.src = productArray[index].imageSrc;
+  //             console.log(`Complete edit image: ${input.value}`);
+  //             break;
+  //           default:
+  //             break;
+  //         }
+  //       }
+  //     } else return false;
+  //   }
 
-      // if all of the values are filled
-      // update array
-      let index = findId(editIdSP.value, productArray);
-      console.log(`Updating array index ${index}`);
-      productArray[index].name = editTenSP.value;
-      productArray[index].sl = editSoluongSP.value;
-      productArray[index].gia = editGiaSP.value;
-      productArray[index].describe = editChitietSP.value;
-      productArray[index].imageSrc = editHinhSP.src;
-      console.log(productArray[index]);
+  //   // if all of the values are filled
+  //   // update array
+  //   let index = findId(editIdSP.value, productArray);
+  //   console.log(`Updating array index ${index}`);
+  //   productArray[index].name = editTenSP.value;
+  //   productArray[index].sl = editSoluongSP.value;
+  //   productArray[index].gia = editGiaSP.value;
+  //   productArray[index].describe = editChitietSP.value;
+  //   productArray[index].imageSrc = editHinhSP.src;
+  //   console.log(productArray[index]);
 
-      try {
-        // update localStorage
-        console.log(`Updating local storage SP#${index + 1}`);
-        localStorage.setItem("products", JSON.stringify(productArray));
-      } catch (e) {
-        alert("Cannot submit data because of exceeding storage!");
-        productArray.splice(index, 1);
-        return false;
-      }
-      let rows = document.querySelectorAll("#product__list-body tr");
-      for (let row of rows) {
-        if (row.id == productArray[index].id) {
-          row.innerHTML = `
-                        <tr id="${productArray[index].id}">
-                            <td>${productArray[index].id}</td>
-                            <td>${productArray[index].name}</td>
-                            <td>${productArray[index].sl}</td>
-                            <td>${productArray[index].gia}</td>
-                            <td style="overflow-y: auto;">${productArray[index].describe}</td>
-                            <td><img src="${productArray[index].imageSrc}" style="max-width: 100%;" alt="Photo of ${productArray[index].name}"></td>
-                            <td><i class="fa-regular fa-pen-to-square"></i>  <i class="fa-solid fa-trash"></i></td>
-                        </tr>
-                    `;
-          break;
-        }
-      }
-      clearInput([
-        editIdSP,
-        editTenSP,
-        editSoluongSP,
-        editGiaSP,
-        editChitietSP,
-        editHinhSP,
-      ]);
-    });
+  //   try {
+  //     // update localStorage
+  //     console.log(`Updating local storage SP#${index + 1}`);
+  //     localStorage.setItem("products", JSON.stringify(productArray));
+  //   } catch (e) {
+  //     alert("Cannot submit data because of exceeding storage!");
+  //     productArray.splice(index, 1);
+  //     return false;
+  //   }
+  //   let rows = document.querySelectorAll("#product__list-body tr");
+  //   for (let row of rows) {
+  //     if (row.id == productArray[index].id) {
+  //       row.innerHTML = `
+  //                     <tr id="${productArray[index].id}">
+  //                         <td>${productArray[index].id}</td>
+  //                         <td>${productArray[index].name}</td>
+  //                         <td>${productArray[index].sl}</td>
+  //                         <td>${productArray[index].gia}</td>
+  //                         <td style="overflow-y: auto;">${productArray[index].describe}</td>
+  //                         <td><img src="${productArray[index].imageSrc}" style="max-width: 100%;" alt="Photo of ${productArray[index].name}"></td>
+  //                         <td><i class="fa-regular fa-pen-to-square"></i>  <i class="fa-solid fa-trash"></i></td>
+  //                     </tr>
+  //                 `;
+  //       break;
+  //     }
+  //   }
+  //   clearInput([
+  //     editIdSP,
+  //     editTenSP,
+  //     editSoluongSP,
+  //     editGiaSP,
+  //     editChitietSP,
+  //     editHinhSP,
+  //   ]);
+  // });
 
-    submitRemoveItem.addEventListener("click", function (event) {
-      event.preventDefault();
-      if (!inputFilled([removeIdSP])) {
-        return false;
-      } else if (findId(removeIdSP.value, productArray) == -1) {
-        alert("Không tìm thấy sản phảm trong danh sách");
-        return false;
-      } else {
-        let index = findId(removeIdSP.value, productArray);
-        // are you sure to remove the product?
-        if (
-          confirm(`Bạn có muốn xóa thông tin sau không?
-    
-                Tên sản phẩm: ${productArray[index].name}
-                Số lượng: ${productArray[index].sl}
-                Giá: ${productArray[index].gia}
-                Chi tiết: ${productArray[index].describe}
-            `)
-        ) {
-          console.log(`Removing key: SP#${index + 1}`);
-          // update array
-          productArray[index].status = "hidden";
-          // update local storage
-          localStorage.setItem("products", JSON.stringify(productArray));
+  //   submitRemoveItem.addEventListener("click", function (event) {
+  //     event.preventDefault();
+  //     if (!inputFilled([removeIdSP])) {
+  //       return false;
+  //     } else if (findId(removeIdSP.value, productArray) == -1) {
+  //       alert("Không tìm thấy sản phảm trong danh sách");
+  //       return false;
+  //     } else {
+  //       let index = findId(removeIdSP.value, productArray);
+  //       // are you sure to remove the product?
+  //       if (
+  //         confirm(`Bạn có muốn xóa thông tin sau không?
 
-          let rows = document.querySelectorAll("#product__list-body tr");
-          for (let row of rows) {
-            if (row.id == productArray[index].id) {
-              row.remove();
-              break;
-            }
-          }
+  //               Tên sản phẩm: ${productArray[index].name}
+  //               Số lượng: ${productArray[index].sl}
+  //               Giá: ${productArray[index].gia}
+  //               Chi tiết: ${productArray[index].describe}
+  //           `)
+  //       ) {
+  //         console.log(`Removing key: SP#${index + 1}`);
+  //         // update array
+  //         productArray[index].status = "hidden";
+  //         // update local storage
+  //         localStorage.setItem("products", JSON.stringify(productArray));
 
-          console.log(productArray);
-          clearInput([removeIdSP]);
-        }
-      }
-    });
-  }
+  //         let rows = document.querySelectorAll("#product__list-body tr");
+  //         for (let row of rows) {
+  //           if (row.id == productArray[index].id) {
+  //             row.remove();
+  //             break;
+  //           }
+  //         }
+
+  //         console.log(productArray);
+  //         clearInput([removeIdSP]);
+  //       }
+  //     }
+  //   });
+  // }
   // Function to block customers
   customerList.addEventListener("click", function (event) {
     if (event.target.closest(".customer__status")) {
@@ -579,6 +527,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   addCustomertoTable();
   //--------------------------------- Product -----------------------------
+  // ------------ Add ------------
   function addProducttoTable() {
     const products = JSON.parse(localStorage.getItem("products"));
     let productContent = "";
@@ -591,79 +540,200 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>Chi tiết</td>
                     <td class="product__img"><img src="${product.Img}" /></td>
                     <td>
-                      <i class="fa-regular fa-pen-to-square"></i>
-                      <i class="fa-solid fa-trash"></i>
+                      <i class="fa-regular fa-pen-to-square edit-icon" onclick="editProduct(this)"></i>
+                      <i class="fa-solid fa-trash delete-icon" onclick="deleteProduct(this)"></i>
                     </td>
                   </tr>`;
     });
     document.querySelector("#product__list-body").innerHTML = productContent;
   }
   addProducttoTable();
-});
-// submit item's info => if have value in the inputs => submit
-function addOneProduct() {
-  submitItem.addEventListener("click", function (event) {
+  document
+    .querySelector(".form__submit-btn")
+    .addEventListener("click", addOneProduct);
+  function addOneProduct(event) {
     event.preventDefault();
-    if (!inputFilled([tenSP, soluongSP, giaSP, chitietSP, hinhSP])) {
+    const name = document.getElementById("form__sp-name");
+    const brand = document.getElementById("form__sp-brand");
+    const quantity = document.getElementById("form__sp-quantity");
+    const price = document.getElementById("form__sp-price");
+    const img = document.getElementById("form__preview-img");
+    const cpu = document.getElementById("form__sp-cpu");
+    const ram = document.getElementById("form__sp-ram");
+    const ramType = document.getElementById("form__sp-ramtype");
+    const hardDisk = document.getElementById("form__sp-harddisk");
+    const card = document.getElementById("form__sp-card");
+    const pin = document.getElementById("form__sp-pin");
+    const weight = document.getElementById("form__sp-weight");
+    const detailImg = document.getElementById("form__preview-detail-img");
+    if (!inputFilled([name, quantity, price, img])) {
       return false;
-    } else if (isNaN(soluongSP.value)) {
+    } else if (isNaN(quantity.value)) {
       alert("Vui lòng nhập số.");
-      soluongSP.focus();
+      quantity.focus();
       return false;
-    } else if (isNaN(giaSP.value)) {
+    } else if (isNaN(price.value)) {
       alert("Vui lòng nhập số.");
-      giaSP.focus();
+      price.focus();
       return false;
     }
     // bring values into table
     else {
       // do the thing
-      productArray[productID - 1] = {
-        id: `SP#${productID}`,
-        name: tenSP.value,
-        sl: soluongSP.value,
-        gia: giaSP.value,
-        describe: chitietSP.value,
-        imageName: hinhSP.value,
-        imageSrc: hinhSP.src,
-        status: "show",
+      const product = {
+        ID: Math.round(Math.random() * 10000000000),
+        Img: img.src,
+        Name: name.value,
+        Brand: brand.value,
+        Price: price.value,
+        Quantity: quantity.value,
+        OriginalPrice: "",
+        Detail: {
+          Img: detailImg.src,
+          CPU: cpu.value,
+          RAM: ram.value,
+          RAMType: ramType.value,
+          HardDisk: hardDisk.value,
+          Card: card.value,
+          Pin: pin.value,
+          Weight: weight.value,
+        },
       };
-
-      try {
-        document.getElementById("product__list-body").innerHTML += `
-                      <tr id="${productArray[productID - 1].id}">
-                          <td>${productArray[productID - 1].id}</td>
-                          <td>${productArray[productID - 1].name}</td>
-                          <td>${productArray[productID - 1].sl}</td>
-                          <td>${productArray[productID - 1].gia}</td>
-                          <td style="overflow-y: auto;">${
-                            productArray[productID - 1].describe
-                          }</td>
-                          <td><img src="${
-                            productArray[productID - 1].imageSrc
-                          }" style="max-width: 100%;" alt="Photo of ${
-          productArray[productID - 1].name
-        }"></td>
-                          <td><i class="fa-regular fa-pen-to-square"></i>  <i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                  `;
-
-        // store data into localStorage
-        if (localStorage.getItem("products")) {
-          localStorage.removeItem("products");
-        }
-        localStorage.setItem("products", JSON.stringify(productArray));
-
-        productID++;
-      } catch (e) {
-        alert("Cannot submit data because of exceeding storage!" + e);
-        productArray.splice(productID - 1, 1);
-      }
+      const productContent = `
+                        <tr>
+                            <td class="product__id">${product.ID}</td>
+                            <td class="product__name">${product.Name}</td>
+                            <td class="product__quantity">${product.Quantity}</td>
+                            <td class="product__price">${product.Price}</td>
+                            <td>Chi tiết</td>
+                            <td class="product__img"><img src="${product.Img}"/></td>
+                            <td>
+                              <i class="fa-regular fa-pen-to-square edit-icon" onclick="editProduct(this)"></i>
+                              <i class="fa-solid fa-trash delete-icon" onclick="deleteProduct(this)"></i>
+                            </td>
+                        </tr>
+                    `;
+      const addtr = document.createElement("tr");
+      addtr.innerHTML = productContent;
+      document.getElementById("product__list-body").append = addtr;
+      // store data into localStorage
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+      products.push(product);
+      localStorage.setItem("products", JSON.stringify(products));
 
       // make all the input empty
-      clearInput([tenSP, soluongSP, giaSP, chitietSP, hinhSP]);
-      document.querySelector(".form__preview").src =
+      clearInput([
+        name,
+        brand,
+        quantity,
+        price,
+        img,
+        price,
+        cpu,
+        ram,
+        ramType,
+        hardDisk,
+        card,
+        pin,
+        weight,
+      ]);
+      document.querySelector("#form__preview-img").src =
+        "./assets/imgs/no-photo-or-blank-image.jpg";
+      document.querySelector("#form__preview-detail-img").src =
         "./assets/imgs/no-photo-or-blank-image.jpg";
     }
-  });
+  }
+});
+// submit item's info => if have value in the inputs => submit
+// ------------ Edit ------------
+function editProduct(productElement) {
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+  const divProduct = productElement.parentElement.parentElement;
+  const id = divProduct.querySelector(".product__id").innerText;
+  const nameText = divProduct.querySelector(".product__name");
+  const quantityText = divProduct.querySelector(".product__quantity");
+  const priceText = divProduct.querySelector(".product__price");
+  const imgDiv = divProduct.querySelector(".product__img");
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].ID == id) {
+      const name = document.getElementById("form__edit-name");
+      const brand = document.getElementById("form__edit-brand");
+      const quantity = document.getElementById("form__edit-quantity");
+      const price = document.getElementById("form__edit-price");
+      const img = document.getElementById("form__edit-preview-img");
+      const cpu = document.getElementById("form__edit-cpu");
+      const ram = document.getElementById("form__edit-ram");
+      const ramType = document.getElementById("form__edit-ramtype");
+      const hardDisk = document.getElementById("form__edit-harddisk");
+      const card = document.getElementById("form__edit-card");
+      const pin = document.getElementById("form__edit-pin");
+      const weight = document.getElementById("form__edit-weight");
+      const detailImg = document.getElementById(
+        "form__edit-preview-detail-img"
+      );
+
+      name.value = products[i].Name;
+      brand.value = products[i].Brand;
+      quantity.value = products[i].Quantity;
+      price.value = products[i].Price;
+      img.src = products[i].Img;
+      cpu.value = products[i].Detail.CPU;
+      ram.value = products[i].Detail.RAM;
+      ramType.value = products[i].Detail.RAMType;
+      hardDisk.value = products[i].Detail.HardDisk;
+      card.value = products[i].Detail.Card;
+      pin.value = products[i].Detail.Pin;
+      weight.value = products[i].Detail.Weight;
+      detailImg.src = products[i].Detail.Img;
+      // ----- Submit ------
+      document
+        .querySelector(".form__edit-submit-btn")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          const product = {
+            ID: id,
+            Img: img.src,
+            Name: name.value,
+            Brand: brand.value,
+            Price: price.value,
+            Quantity: quantity.value,
+            OriginalPrice: "",
+            Detail: {
+              Img: detailImg.src,
+              CPU: cpu.value,
+              RAM: ram.value,
+              RAMType: ramType.value,
+              HardDisk: hardDisk.value,
+              Card: card.value,
+              Pin: pin.value,
+              Weight: weight.value,
+            },
+          };
+          nameText.innerText = product.Name;
+          quantityText.innerText = product.Quantity;
+          priceText.innerText = product.Price;
+          imgDiv.src = product.Img;
+          products[i] = product;
+          localStorage.setItem("products", JSON.stringify(products));
+        });
+      break;
+    }
+  }
+  document.querySelector(".product__edit").style.display = "block";
+}
+// ------------ Delete ------------
+function deleteProduct(productElement) {
+  if (confirm("Bạn có chắc chắn xóa sản phẩm này")) {
+    const divProduct = productElement.parentElement.parentElement;
+    const id = divProduct.querySelector(".product__id").innerText;
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].ID == id) {
+        products.splice(i, 1);
+        localStorage.setItem("products", JSON.stringify(products));
+        break;
+      }
+    }
+    divProduct.remove();
+  }
 }

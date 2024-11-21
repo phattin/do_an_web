@@ -51,92 +51,125 @@
               <table id="product__list">
                 <thead>
                   <tr>
-                    <th class="product__size-id">Mã SP</th>
+                    <th class="product__size-id">Mã sản phẩm</th>
                     <!-- <th class="product__size-id">Mã loại</th> -->
-                    <th>Tên SP</th>
+                    <th>Tên sản phẩm</th>
                     <th class="product__size-id">Số lượng</th>
-                    <th style="width: 15%">Giá SP</th>
+                    <th style="width: 15%">Giá sản phẩm</th>
                     <th>Chi tiết</th>
-                    <th style="width: 20%">Hình SP</th>
+                    <th style="width: 20%">Hình sản phẩm</th>
                     <th>Chức năng</th>
                   </tr>
                 </thead>
                 <tbody id="product__list-body">
-                  <tr>
-                    <td class="product__id">Mã SP</td>
-                    <td class="product__name">Tên SP</td>
-                    <td class="product__quantity">Số lượng</td>
-                    <td class="product__price">Giá SP</td>
-                    <td>Chi tiết</td>
-                    <td class="product__img"><img src="" /></td>
-                    <td>
-                      <i class="fa-regular fa-pen-to-square"></i>
-                      <i class="fa-solid fa-trash"></i>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
             <div class="product__btn-style">
-              <button type="button" id="product__btn-add-item">
+              <button
+                type="button"
+                id="product__btn-add-item"
+                onclick="showProductAdd()"
+              >
                 Thêm sản phẩm
               </button>
-              <button type="button" id="product__btn-edit-item">
-                Sửa sản phẩm
-              </button>
-              <button type="button" id="product__btn-remove-item">
-                Xóa sản phẩm
-              </button>
             </div>
-            <div class="overlay">
-              <div id="product__add" class="form">
+            <!-- ------------------------ Add ------------------------- -->
+            <div class="overlay product__add">
+              <div id="product__add-box">
                 <i class="fa-solid fa-xmark close"></i>
                 <form>
-                  <div>
-                    <div class="form__row">
-                      <label for="form__sp-name">Tên sản phẩm: </label><br />
-                      <input
-                        type="text"
-                        id="form__sp-name"
-                        name="sp-name"
-                        required
-                        autofocus
-                      />
+                  <div class="form">
+                    <div class="form__row-left">
+                      <div class="form__row">
+                        <label for="form__sp-name">Tên sản phẩm: </label><br />
+                        <input
+                          type="text"
+                          id="form__sp-name"
+                          name="sp-name"
+                          required
+                          autofocus
+                        />
+                      </div>
+                      <div class="form__row">
+                        <label for="form__sp-brand">Tên thương hiệu: </label
+                        ><br />
+                        <input
+                          type="text"
+                          id="form__sp-brand"
+                          name="sp-brand"
+                          required
+                          autofocus
+                        />
+                      </div>
+                      <div class="form__row">
+                        <label for="form__sp-quantity">Số lượng: </label><br />
+                        <input
+                          type="text"
+                          id="form__sp-quantity"
+                          name="sp-quantity"
+                          required
+                        />
+                      </div>
+                      <div class="form__row">
+                        <label for="form__sp-price">Giá sản phẩm: </label><br />
+                        <input
+                          type="text"
+                          id="form__sp-price"
+                          name="sp-price"
+                          required
+                        />
+                      </div>
+                      <div class="form__row">
+                        <label for="form__sp-img">Hình sản phẩm</label><br />
+                        <input
+                          type="file"
+                          id="form__sp-img"
+                          name="sp-img"
+                          accept="image/*"
+                          onchange="uploadImg(this)"
+                          required
+                        />
+                        <!-- https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file -->
+
+                        <div
+                          style="
+                            margin: 10px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 30%;
+                          "
+                        >
+                          <img
+                            src="./assets/imgs/no-photo-or-blank-image.jpg"
+                            alt="blank image!"
+                            class="form__preview"
+                            id="form__preview-img"
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div class="form__row">
-                      <label for="form__sp-quantity">Số lượng: </label><br />
-                      <input
-                        type="text"
-                        id="form__sp-quantity"
-                        name="sp-quantity"
-                        required
-                      />
-                    </div>
-                    <div class="form__row">
-                      <label for="form__sp-price">Giá sản phẩm: </label><br />
-                      <input
-                        type="text"
-                        id="form__sp-price"
-                        name="sp-price"
-                        required
-                      />
-                    </div>
-                    <div class="form__row">
-                      <div class="form__sp-description">
+                    <div class="form__row-right">
+                      <div
+                        class="form__sp-description"
+                        onclick="toggleMoreDetail()"
+                        style="width: 100px"
+                      >
                         <span class="form__sp-detail">Chi tiết</span>
                         <i class="fa-solid fa-caret-down"></i>
                       </div>
                       <div class="form__sp-description-more">
                         <div class="form__row">
-                          <label for="form__sp-price">CPU: </label>
+                          <label for="form__sp-cpu">CPU: </label>
                           <input type="text" id="form__sp-cpu" name="sp-cpu" />
                         </div>
                         <div class="form__row">
-                          <label for="form__sp-price">RAM: </label>
+                          <label for="form__sp-ram">RAM: </label>
                           <input type="text" id="form__sp-ram" name="sp-ram" />
                         </div>
                         <div class="form__row">
-                          <label for="form__sp-price">Loại RAM: </label>
+                          <label for="form__sp-ramtype">Loại RAM: </label>
                           <input
                             type="text"
                             id="form__sp-ramtype"
@@ -144,7 +177,7 @@
                           />
                         </div>
                         <div class="form__row">
-                          <label for="form__sp-price">Ổ cứng:</label>
+                          <label for="form__sp-harddisk">Ổ cứng:</label>
                           <input
                             type="text"
                             id="form__sp-harddisk"
@@ -152,7 +185,7 @@
                           />
                         </div>
                         <div class="form__row">
-                          <label for="form__sp-price">Card:</label>
+                          <label for="form__sp-card">Card:</label>
                           <input
                             type="text"
                             id="form__sp-card"
@@ -160,175 +193,227 @@
                           />
                         </div>
                         <div class="form__row">
-                          <label for="form__sp-price">Pin:</label>
+                          <label for="form__sp-pin">Pin:</label>
                           <input type="text" id="form__sp-pin" name="sp-pin" />
                         </div>
                         <div class="form__row">
-                          <label for="form__sp-price">Khối lượng:</label>
+                          <label for="form__sp-weight">Khối lượng:</label>
                           <input
                             type="text"
                             id="form__sp-weight"
                             name="sp-weight"
                           />
                         </div>
+                        <div class="form__row" style="display: block">
+                          <label for="form__sp-img" style="width: fit-content"
+                            >Hình chi tiết sản phẩm</label
+                          ><br />
+                          <input
+                            type="file"
+                            id="form__sp-detail-img"
+                            name="sp-img"
+                            accept="image/*"
+                            onchange="uploadImg(this)"
+                          />
+                          <!-- https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file -->
+
+                          <div
+                            style="
+                              margin: 10px;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              width: 30%;
+                            "
+                          >
+                            <img
+                              src="./assets/imgs/no-photo-or-blank-image.jpg"
+                              alt="blank image!"
+                              class="form__preview"
+                              id="form__preview-detail-img"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="form__row">
-                      <label for="form__sp-img">Hình SP</label><br />
-                      <input
-                        type="file"
-                        id="form__sp-img"
-                        name="sp-img"
-                        accept="image/*"
-                        onchange="setTimeout(function(){changePreview('form__sp-img');}, 500);"
-                        required
-                      />
-                      <!-- https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file -->
-                    </div>
-                    <div id="form__submit" class="form__submit-style">
-                      <input type="submit" value="Thêm" />
-                    </div>
                   </div>
-                  <div
-                    style="
-                      border: 1px solid grey;
-                      border-radius: 5px;
-                      margin: 10px;
-                    "
-                  ></div>
-                  <div
-                    style="
-                      margin: 10px;
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      width: 30%;
-                    "
-                  >
-                    <img
-                      src="./assets/imgs/no-photo-or-blank-image.jpg"
-                      alt="blank image!"
-                      class="form__preview"
-                    />
+                  <div id="form__submit" class="form__submit-style">
+                    <button type="submit" class="form__submit-btn">Thêm</button>
                   </div>
                 </form>
               </div>
             </div>
-            <div id="product__edit" class="form disable">
-              <div class="form__x-icon">
-                <a href="#" id="form__close-edit-item">
-                  <i class="fa-solid fa-xmark"></i>
-                </a>
-              </div>
-              <form>
-                <div>
-                  <div class="form__row">
-                    <label for="form__edit-id">Mã SP</label><br />
-                    <input
-                      type="text"
-                      id="form__edit-id"
-                      required
-                      name="edit-id"
-                      placeholder="SP#XXX"
-                      pattern="SP#[0-9]{1,}"
-                    />
-                  </div>
-                  <div class="form__row">
-                    <label for="form__edit-name">Tên SP</label><br />
-                    <input type="text" name="edit-name" id="form__edit-name" />
-                  </div>
-                  <div class="form__row">
-                    <label for="form__edit-quantity">Số lượng</label><br />
-                    <input
-                      type="number"
-                      name="edit-quantity"
-                      id="form__edit-quantity"
-                    />
-                  </div>
-                  <div class="form__row">
-                    <label for="form__edit-price">Giá SP</label><br />
-                    <input
-                      type="number"
-                      name="edit-price"
-                      id="form__edit-price"
-                    />
-                  </div>
-                  <div class="form__row">
-                    <span class="form__edit-description">Chi tiết</span>
-                    <textarea
-                      type="text"
-                      name="edit-description"
-                      id="form__edit-description"
-                      required
-                    ></textarea>
-                  </div>
-                  <div class="form__row">
-                    <label for="form__edit-img">Hình SP</label><br />
-                    <input
-                      type="file"
-                      name="edit-img"
-                      id="form__edit-img"
-                      accept="image/*"
-                      onchange="setTimeout(function(){changePreview('form__edit-img');}, 600);"
-                    />
-                  </div>
-                  <div id="form__submit-edit-item" class="form__submit-style">
-                    <input type="submit" value="Sửa" />
-                  </div>
-                </div>
-                <div
-                  style="
-                    border: 1px solid grey;
-                    border-radius: 5px;
-                    margin: 10px;
-                  "
-                ></div>
-                <div
-                  style="
-                    margin: 10px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                  "
-                >
-                  <img
-                    src="./assets/imgs/no-photo-or-blank-image.jpg"
-                    alt="blank image"
-                    class="form__preview"
-                  />
-                </div>
-              </form>
-            </div>
-            <div id="product__remove" class="form disable">
-              <div class="form__x-icon">
-                <a href="#" id="form__close-remove-item">
-                  <i class="fa-solid fa-xmark"></i>
-                </a>
-              </div>
-              <form>
-                <div>
-                  <div class="form__row">
-                    <div class="form__label">
-                      <label for="form__remove-id"
-                        >Nhập vào mã SP cần xóa
-                      </label>
+            <!-- ---------------------------------- Edit ---------------------------- -->
+            <div class="overlay product__edit">
+              <div id="product__edit-box">
+                <i class="fa-solid fa-xmark close"></i>
+                <form>
+                  <div class="form">
+                    <div class="form__row-left">
+                      <div class="form__row">
+                        <label for="form__edit-name">Tên sản phẩm: </label><br />
+                        <input
+                          type="text"
+                          id="form__edit-name"
+                          name="edit-name"
+                          required
+                          autofocus
+                        />
+                      </div>
+                      <div class="form__row">
+                        <label for="form__edit-brand">Tên thương hiệu: </label
+                        ><br />
+                        <input
+                          type="text"
+                          id="form__edit-brand"
+                          name="edit-brand"
+                          required
+                          autofocus
+                        />
+                      </div>
+                      <div class="form__row">
+                        <label for="form__edit-quantity">Số lượng: </label><br />
+                        <input
+                          type="text"
+                          id="form__edit-quantity"
+                          name="edit-quantity"
+                          required
+                        />
+                      </div>
+                      <div class="form__row">
+                        <label for="form__edit-price">Giá sản phẩm: </label><br />
+                        <input
+                          type="text"
+                          id="form__edit-price"
+                          name="edit-price"
+                          required
+                        />
+                      </div>
+                      <div class="form__row">
+                        <label for="form__edit-img">Hình sản phẩm</label><br />
+                        <input
+                          type="file"
+                          id="form__edit-img"
+                          name="edit-img"
+                          accept="image/*"
+                          onchange="uploadImg(this)"
+                        />
+                        <!-- https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file -->
+
+                        <div
+                          style="
+                            margin: 10px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            max-width: 200px;
+                          "
+                        >
+                          <img
+                            src="./assets/imgs/no-photo-or-blank-image.jpg"
+                            alt="blank image!"
+                            class="form__preview"
+                            id="form__edit-preview-img"
+                            style="width: 100%;"
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div class="form__input">
-                      <input
-                        type="text"
-                        id="form__remove-id"
-                        required
-                        placeholder="SP#XXX"
-                        pattern="SP#[0-9]{1,}"
-                      />
+                    <div class="form__row-right">
+                      <div
+                        class="form__edit-description"
+                        onclick="toggleMoreDetail()"
+                        style="width: 100px"
+                      >
+                        <span class="form__edit-detail">Chi tiết:</span>
+                      </div>
+                      <div class="form__edit-description-more">
+                        <div class="form__row">
+                          <label for="form__edit-cpu">CPU: </label>
+                          <input type="text" id="form__edit-cpu" name="edit-cpu" />
+                        </div>
+                        <div class="form__row">
+                          <label for="form__edit-ram">RAM: </label>
+                          <input type="text" id="form__edit-ram" name="edit-ram" />
+                        </div>
+                        <div class="form__row">
+                          <label for="form__edit-ramtype">Loại RAM: </label>
+                          <input
+                            type="text"
+                            id="form__edit-ramtype"
+                            name="edit-ramtype"
+                          />
+                        </div>
+                        <div class="form__row">
+                          <label for="form__edit-harddisk">Ổ cứng:</label>
+                          <input
+                            type="text"
+                            id="form__edit-harddisk"
+                            name="edit-harddisk"
+                          />
+                        </div>
+                        <div class="form__row">
+                          <label for="form__edit-card">Card:</label>
+                          <input
+                            type="text"
+                            id="form__edit-card"
+                            name="edit-card"
+                          />
+                        </div>
+                        <div class="form__row">
+                          <label for="form__edit-pin">Pin:</label>
+                          <input type="text" id="form__edit-pin" name="edit-pin" />
+                        </div>
+                        <div class="form__row">
+                          <label for="form__edit-weight">Khối lượng:</label>
+                          <input
+                            type="text"
+                            id="form__edit-weight"
+                            name="edit-weight"
+                          />
+                        </div>
+                        <div class="form__row" style="display: block">
+                          <label for="form__edit-img" style="width: fit-content"
+                            >Hình chi tiết sản phẩm</label
+                          ><br />
+                          <input
+                            type="file"
+                            id="form__edit-detail-img"
+                            name="edit-img"
+                            accept="image/*"
+                            onchange="uploadImg(this)"
+                          />
+                          <!-- https://stackoverflow.com/questions/4328947/limit-file-format-when-using-input-type-file -->
+
+                          <div
+                            style="
+                              margin: 10px;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              width: 30%;
+                            "
+                          >
+                            <img
+                              src="./assets/imgs/no-photo-or-blank-image.jpg"
+                              alt="blank image!"
+                              class="form__preview"
+                              id="form__edit-preview-detail-img"
+                              style="width: 100%;"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div id="form__submit-remove-item" class="form__submit-style">
-                    <input type="submit" value="Xóa" />
+                  <div id="form__submit" class="form__submit-style">
+                    <button type="submit" class="form__edit-submit-btn">Sửa</button>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
+            <!-- -------------------------------- Remove ----------------------------- -->
+            
           </div>
           <!------------------- Customer ----------------->
           <div id="customer" class="customer disable">

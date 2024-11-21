@@ -698,84 +698,6 @@ function showAdminPage() {
 }
 // -------------------------------- Product ------------------------------
 
-` <section class="product all-product-item dell">
-    <img
-    src="./assets/imgs/dell9.jpg"
-    alt=""
-    class="product-img"
-    />
-    <p class="product-name">HP 15s fq5229TU i3 1215U (8U237PA)</p>
-    <div class="product-brand" style="display: none;">Dell</div>
-    <span class="product-price">10.490.000</span><sup class="sale-price">₫</sup>
-    <div class="product-original-price">
-    <span class="original-price">13.690.000</span><sup class="original-price">₫</sup>
-    <span class="sale-value">-23%</span>
-    </div>
-    <i class="fa-regular fa-eye more-details">
-    <div class="note">Xem thêm thông tin</div>
-    </i>
-    <i class="fa-solid fa-cart-shopping add-cart">
-    <div class="note">Thêm vào giỏ hàng</div>
-    </i>
-    <div class="overlay" >
-    <div class="detail-box">
-      <i class="fa-solid fa-rectangle-xmark close"></i>
-      <section class="detail-head">
-        <img src="./assets/imgs/dell1d.jpg" alt="" class="detail-img">
-        <div class="detail-title">
-          <h2 class="detail-heading">Laptop HP Inspiron 15 3520 i5 1235U/16GB/512GB/120Hz/OfficeHS/Win11 (N5I5052W1)</h2>
-          <span class="detail-price">16.390.000</span><sup class="sale-price">₫</sup>
-          <div class="detail-original-price">
-            <span class="detail-original-price-value">16.990.000</span><sup class="sale-price">₫</sup>
-          </div>
-          <div class="product-quantity">3</div>
-          <div class="detail-quantity">
-            <i class="fa-solid fa-circle-minus desc-quantity" onclick="decreaseQuantity(this)"></i>
-            <input type="number" class="detail-quantity-value" value="1" min="1"></input>
-            <i class="fa-solid fa-circle-plus plus-quantity" onclick="increaseQuantity(this)"></i>
-          </div>
-          <div class="detail-btn">
-            <button class="add-cart-btn">Thêm vào giỏ hàng</button>
-            <button class="buy-btn">Mua ngay</button>
-          </div>
-        </div>
-      </section>
-      <h3 class="detail-heading">Thông tin chi tiết</h3>
-      <table class="detail-table">
-        <tr>
-          <td>Bộ xử lý:</td>
-          <td>Intel Core i5 Alder Lake - 1235U</td>
-        </tr>
-        <tr>
-          <td>RAM:</td>
-          <td>16GB</td>
-        </tr>
-        <tr>
-          <td>Loại RAM</td>
-          <td>DDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)</td>
-        </tr>
-        <tr>
-          <td>Ổ cứng:</td>
-          <td>512 GB SSD NVMe PCIe (Có thể tháo ra, lắp thanh khác tối đa 2 TB (2280) / 1 TB (2230))
-            Hỗ trợ khe cắm HDD SATA 2.5 inch mở rộng (nâng cấp tối đa 2 TB)</td>
-        </tr>
-        <tr>
-          <td>Card:</td>
-          <td>Intel Iris Xe</td>
-        </tr>
-        <tr>
-          <td>Pin:</td>
-          <td>3-cell, 41Wh</td>
-        </tr>
-        <tr>
-          <td>Khối lượng:</td>
-          <td>1.66 kg</td>
-        </tr>
-      </table>
-    </div>
-    </div>
-</section> `;
-
 if (!localStorage.getItem("flagAddProduct")) {
   let products = [];
   const productListItem = document.querySelectorAll(".all-product-item");
@@ -792,7 +714,6 @@ if (!localStorage.getItem("flagAddProduct")) {
       ).innerText,
       Detail: {
         Img: item.querySelector(".detail-img").src,
-        Name: item.querySelector(".detail-heading").innerText,
         CPU: item.querySelector(".CPU").innerText,
         RAM: item.querySelector(".RAM").innerText,
         RAMType: item.querySelector(".RAM-type").innerText,
@@ -839,7 +760,7 @@ function displayProduct() {
                     <section class="detail-head">
                       <img src="./assets/imgs/dell2d.jpg" alt="" class="detail-img">
                       <div class="detail-title">
-                        <h2 class="detail-heading">${item.Detail.Name}</h2>
+                        <h2 class="detail-heading">${item.Name}</h2>
                         <span class="detail-price">${item.Price}</span><sup class="sale-price">₫</sup>
                         <div class="detail-original-price">
                           <span class="detail-original-price-value">${item.OriginalPrice}</span><sup class="sale-price">₫</sup>

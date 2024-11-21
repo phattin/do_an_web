@@ -17,7 +17,7 @@ body {
   background: rgba(0, 0, 0, 0.5); /* Nền mờ màu đen */
   z-index: 10;
   cursor: pointer;
-  /* display: none; */
+  display: none;
 }
 .close {
   color: red;
@@ -72,10 +72,10 @@ a:active {
 
 form {
   /* width: 50%; */
-  display: flex;
   justify-content: flex-start;
   padding-top: 10px;
   background-color: rgb(230, 230, 223);
+  cursor: default;
 }
 
 form input {
@@ -87,8 +87,13 @@ img {
 }
 
 .form__submit-style {
-  margin-left: 70%;
+  text-align: center;
+}
+.form__edit-submit-btn,
+.form__submit-btn {
+  width: 200px;
   padding: 10px 0;
+  cursor: pointer;
 }
 
 .product__header,
@@ -121,8 +126,8 @@ img {
   display: block;
 }
 
-#product__add,
-#product__edit {
+#product__add-box,
+#product__edit-box {
   min-width: 400px;
   width: 800px;
   overflow: auto;
@@ -222,5 +227,37 @@ button:hover {
   cursor: pointer;
 }
 .form__sp-description-more {
-  /* display: none; */
+  display: none;
+}
+.form {
+  display: flex;
+}
+.form__row-left {
+  max-width: 400px;
+  border-right: 1px solid;
+  padding: 20px;
+}
+.form__row-right {
+  padding: 20px;
+}
+.form__row-right .form__row {
+  display: flex;
+}
+.form__row-right label {
+  display: inline-block;
+  width: 100px;
+}
+.edit-icon,
+.delete-icon {
+  font-size: 20px;
+  padding: 5px;
+  cursor: pointer;
+}
+.edit-icon:hover {
+  color: #321ee6;
+  background-color: #e9e6e6;
+}
+.delete-icon:hover {
+  color: #e61e1e;
+  background-color: #e9e6e6;
 }
